@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Drawing;
-namespace Bitmap_project
-{
 
+namespace ConsoleApplication1
+{
     class Program
     {
-
         static void Main(string[] args)
-        {  
+        {
+
             string bitmapFilePath = @"E:\";
             string bitmapFileName = Convert.ToString(Console.ReadLine());//@"C:\1f48b.png";
             bitmapFilePath = bitmapFilePath + bitmapFileName;
@@ -17,40 +17,40 @@ namespace Bitmap_project
             int width = b1.Width;
             Color myColor = Color.FromArgb(100, 150, 75);
 
-            // Color.FromArgb(BackColor.A, BackColor.R, BackColor.G, BackColor.B)
-            Color[][] colorMatrix = new Color[width][];
+            Byte[][] colorMatrix = new byte[width][];
             for (int i = 0; i < width; i++)
             {
-                colorMatrix[i] = new Color[hight];
+                colorMatrix[i] = new byte[hight];
                 for (int j = 0; j < hight; j++)
                 {
-                    colorMatrix[i][j] = b1.GetPixel(i, j);
-
+                    colorMatrix[i][j] = b1.GetPixel(i, j).R;
+                    colorMatrix[i][j] = b1.GetPixel(i, j).R;
                 }
             }
-            // return colorMatrix;
             for (int i = 0; i < width; i++)
             {
                 for (int j = 0; j < hight; j++)
                 {
                     // Console.Write(colorMatrix[i][j]);
                     using (System.IO.StreamWriter file =
-                    new System.IO.StreamWriter(@"E:\Marix.txt", true))
+                    new System.IO.StreamWriter(@"E:\ImageR.txt", true))
                     {
-                        file.Write(colorMatrix[i][j]);
+                        file.Write(colorMatrix[i][j] + " ");
                     }
 
                 }
                 using (System.IO.StreamWriter file =
-                   new System.IO.StreamWriter(@"E:\Marix.txt", true))
+                   new System.IO.StreamWriter(@"E:\ImageR.txt", true))
                 {
                     file.WriteLine("\n");
                 }
                 //Console.WriteLine("\n");
             }
-
-            // Console.ReadKey();
-
+            using (System.IO.StreamWriter file =
+                   new System.IO.StreamWriter(@"E:\ImageR_dat.txt", true))
+            {
+                file.WriteLine("{0},{1}", hight, width);
+            }
         }
     }
 }
