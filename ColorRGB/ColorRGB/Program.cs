@@ -11,25 +11,27 @@ namespace ConsoleApplication1
             string bitmapFilePath = @"E:\";
             string bitmapFileName = Convert.ToString(Console.ReadLine());//@"C:\1f48b.png";
             bitmapFilePath = bitmapFilePath + bitmapFileName;
-           
+            //
             Bitmap b1 = new Bitmap(bitmapFilePath);
 
             int height = b1.Height;
             int width = b1.Width;
 
-            Byte[,] colorMatrix = new byte[width, height];
+            Byte[,] colorMatrix = new byte[height, width];
             for (int i = 0; i < width; i++)
             {
                 // colorMatrix[i] = new byte[hight];
                 for (int j = 0; j < height; j++)
                 {
-                    colorMatrix[i, j] = b1.GetPixel(i, j).R;
+                    colorMatrix[j, i] = b1.GetPixel(i, j).R;
 
                 }
             }
-            for (int i = 0; i < width; i++)
+            //
+           
+            for (int i = 0; i < height; i++)
             {
-                for (int j = 0; j < height; j++)
+                for (int j = 0; j < width; j++)
                 {
                     // Console.Write(colorMatrix[i][j]);
                     using (System.IO.StreamWriter file =
