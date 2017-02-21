@@ -8,10 +8,17 @@ namespace ConsoleApplication1
         static void Main(string[] args)
         {
 
-            string bitmapFilePath = @"E:\";
-            string bitmapFileName = Convert.ToString(Console.ReadLine());//@"C:\1f48b.png";
-            bitmapFilePath = bitmapFilePath + bitmapFileName;
-            //
+            // string bitmapFilePath = string.Empty;//@"E:\";
+            Console.WriteLine("Please input image path");
+            string bitmapFilePath = Convert.ToString(Console.ReadLine());
+            // bitmapFilePath = bitmapFilePath + bitmapFileName;
+            Console.WriteLine("Please input R or G or B");
+            char RGB = Convert.ToChar(Console.Read());
+            String[] subpaths = bitmapFilePath.Split('.');
+            //foreach (var subpath in subpaths)
+
+            string filePath = subpaths[0];
+
             Bitmap b1 = new Bitmap(bitmapFilePath);
 
             int height = b1.Height;
@@ -23,26 +30,42 @@ namespace ConsoleApplication1
                 // colorMatrix[i] = new byte[hight];
                 for (int j = 0; j < height; j++)
                 {
-                    colorMatrix[j, i] = b1.GetPixel(i, j).R;
+                    switch (RGB)
+                    {
+                        case 'R':
+                            colorMatrix[j, i] = b1.GetPixel(i, j).R;
+                            break;
+                        case 'G':
+                            colorMatrix[j, i] = b1.GetPixel(i, j).G;
+                            break;
+                        case 'B':
+                            colorMatrix[j, i] = b1.GetPixel(i, j).B;
+                            break;
+                        default:
+                            Console.WriteLine("different  word, program will be take R default");
+                            colorMatrix[j, i] = b1.GetPixel(i, j).R;
+                            break;
+                    }
+                    // colorMatrix[j, i] = b1.GetPixel(i, j).R;
 
                 }
             }
             //
-           
+
             for (int i = 0; i < height; i++)
             {
                 for (int j = 0; j < width; j++)
                 {
                     // Console.Write(colorMatrix[i][j]);
                     using (System.IO.StreamWriter file =
-                    new System.IO.StreamWriter(@"E:\ImageR.txt", true))
+                    new System.IO.StreamWriter(filePath + RGB + ".txt", true))//+ @"Image"
                     {
                         file.Write(colorMatrix[i, j] + " ");
                     }
 
                 }
                 using (System.IO.StreamWriter file =
-                   new System.IO.StreamWriter(@"E:\ImageR.txt", true))
+                   new System.IO.StreamWriter(filePath + RGB + ".txt", true))// + @"Image"
                 {
                     file.WriteLine("\n");
                 }
@@ -50,10 +73,13 @@ namespace ConsoleApplication1
             }
             using (System.IO.StreamWriter file =
 
-                   new System.IO.StreamWriter(@"E:\ImageR_dat.txt", true))
+                   new System.IO.StreamWriter(filePath + RGB + "_dat.txt", true))//+ @"Image" 
             {
-                file.WriteLine("{0},{1}", height, width);
+                file.WriteLine("{0} {1}", height, width);
             }
+            //Console.WriteLine("Image" + RGB + ".txt and Image" + RGB + "_dat.txt are created in "+filePath );
+            Console.WriteLine("files are created in  the same location that image");
+            Console.ReadKey();
         }
     }
 }
