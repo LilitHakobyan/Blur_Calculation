@@ -12,15 +12,16 @@ namespace ConsoleApplication1
             string bitmapFilePath = Convert.ToString(Console.ReadLine());
             Console.WriteLine("Please input R or G or B");
             char RGB = Convert.ToChar(Console.Read());
-            String[] subpaths = bitmapFilePath.Split('.');
+            string[] subpaths = bitmapFilePath.Split('.');
 
             string filePath = subpaths[0];
+           
             try
             {
                 Bitmap b1 = new Bitmap(bitmapFilePath);
                 int height = b1.Height;
                 int width = b1.Width;
-                Byte[,] colorMatrix = new byte[height, width];
+                byte[,] colorMatrix = new byte[height, width];
                 for (int i = 0; i < width; i++)
                 {
                     for (int j = 0; j < height; j++)
@@ -44,8 +45,8 @@ namespace ConsoleApplication1
 
                     }
                 }
-                StreamWriter file = File.CreateText(filePath + RGB + ".txt");
-                StreamWriter fileRenge = File.CreateText(filePath + RGB + "_dat.txt");
+                StreamWriter file = File.CreateText(@filePath + RGB + ".txt");
+                StreamWriter fileRenge = File.CreateText(@filePath + RGB + "_dat.txt");
 
                 for (int i = 0; i < height; i++)
                 {
