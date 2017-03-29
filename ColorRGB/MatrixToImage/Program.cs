@@ -19,31 +19,39 @@ namespace MatrixToImage
             string matrix = string.Empty;
             string element = string.Empty;
             for (int i = 0; i < height; i++)
-            {   matrix = readerMatrix.ReadLine();
+            {
+                matrix = readerMatrix.ReadLine();
+               char[] y= matrix.ToCharArray();
+               // Console.WriteLine(matrix);
+                int k = 0;
                 for (int j = 0; j < width; j++)
                 {
+                    //k = j;
+                    while (y[k] != ' ')
                     {
-                        while (matrix[j]!=' ')
-                        {
-                            element += Convert.ToString(matrix[j]); 
-                        }
-                        colorMatrix[i, j] = Convert.ToInt32(element);
-                        element = string.Empty;
+
+                        element += Convert.ToString(y[k]);
+                        k++;
                     }
+                    k++;
+                    
+                    colorMatrix[i, j] = Convert.ToInt32(element);
+                    element = string.Empty;
                 }
-              
+
+
             }
             for (int i = 0; i < height; i++)
             {
                 for (int j = 0; j < width; j++)
                 {
-                    Console.Write(colorMatrix[i, j]+' ');
+                    Console.Write(colorMatrix[i, j] + ' ');
                 }
-                 Console.WriteLine();
+                Console.WriteLine();
             }
 
-             // Bitmap b1 = new Bitmap("E://Sample.txt");
-            
+            // Bitmap b1 = new Bitmap("E://Sample.txt");
+
 
             //  Console.WriteLine(colorMatrix);
             Console.ReadKey();
