@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColorRGB", "ColorRGB\ColorRGB.csproj", "{0E613714-66D9-4D8A-9799-EB37728BAE45}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatrixToImage", "MatrixToImage\MatrixToImage.csproj", "{B84ACCFD-730C-4E61-A0CC-D76D682E095D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CovertBitmapToImage", "CovertBitmapToImage\CovertBitmapToImage.csproj", "{D7AF5971-5DF8-4E72-959A-E29A5C79010A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{B84ACCFD-730C-4E61-A0CC-D76D682E095D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B84ACCFD-730C-4E61-A0CC-D76D682E095D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B84ACCFD-730C-4E61-A0CC-D76D682E095D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7AF5971-5DF8-4E72-959A-E29A5C79010A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7AF5971-5DF8-4E72-959A-E29A5C79010A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7AF5971-5DF8-4E72-959A-E29A5C79010A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7AF5971-5DF8-4E72-959A-E29A5C79010A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
