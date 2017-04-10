@@ -23,7 +23,7 @@ namespace CovertBitmapToImage
              // Convert back to image.
             var ms1 = new MemoryStream(imageData);
             Image image = Image.FromStream(ms1);
-              image.Save(@"E:\newImage.bmp");
+            image.Save(@"E:\newImage.bmp");
 
             Console.ReadKey();
 

@@ -46,7 +46,7 @@ namespace MatrixToImage
 
 
             }
-
+            //
              //byte[] imageData = File.ReadAllBytes("E://Sample.txt");
                 var ms = new MemoryStream(imageData);
             
