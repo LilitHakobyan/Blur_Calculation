@@ -46,7 +46,6 @@ namespace MatrixToImage
                     element = string.Empty;
                 }
 
-
             }
             //
              //byte[] imageData = File.ReadAllBytes("E://Sample.txt");
