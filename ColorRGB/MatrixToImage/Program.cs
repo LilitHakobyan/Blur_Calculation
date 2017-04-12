@@ -53,7 +53,7 @@ namespace MatrixToImage
                 Image image = Image.FromStream(ms);
                 image.Save(@"E:\newImage1.jpg");
             
-            //http://stackoverflow.com/questions/21555394/how-to-create-bitmap-from-byte-array
+  
           
 
            
