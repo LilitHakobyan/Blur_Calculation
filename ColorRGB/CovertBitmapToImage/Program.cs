@@ -8,25 +8,27 @@ namespace CovertBitmapToImage
     {
         static void Main(string[] args)
         {
-            byte[] imageData;
-
-            // Create the byte array.
-            var originalImage = Image.FromFile(@"E:\original1.bmp");
-               var ms = new MemoryStream();
-                originalImage.Save(ms, ImageFormat.Bmp);
-                imageData = ms.ToArray();
-            for (int i = 0; i < imageData.Length; i++)
+           
+            int[,] colorMatrix = new int[, ] {   { 1, 0, -1, 1, 0, -1 },
+                                            { 2, 0, -2, 1, 0, -1 },
+                                            { 1, 0, -1, 1, 0, -1 },
+                                            { 1, 0, -1, 1, 0, -1 },
+                                            { 2, 0, -2, 1, 0, -1 },
+                                            { 1, 0, -1, 1, 0, -1 } };
+            int[,] SobelV = new int[3, 3] { { 1, 0, -1 },
+                                            { 2, 0, -2 },
+                                            { 1, 0, -1 }
+                                                          };
+            for (int i = 0; i <  6 -2; i++)
             {
-                Console.Write(imageData[i]+ " ");
-                
+                for (int j = 0; j < 6-2; j++)
+
+                {
+                    colorMatrix[i + 1, j + 1] = colorMatrix[i , j ]* SobelV[0,0] + colorMatrix[i , j + 2]*SobelV[0, 2]
+                                           + colorMatrix[i + 1, j ] * SobelV[1, 0] + colorMatrix[i + 1, j + 2]*SobelV[1, 2]
+                                           + colorMatrix[i + 2, j ] * SobelV[2, 0] + colorMatrix[i + 2, j + 2]*SobelV[2, 2];
+                }
             }
-             // Convert back to image.
-            var ms1 = new MemoryStream(imageData);
-            Image image = Image.FromStream(ms1);
-            image.Save(@"E:\newImage.bmp");
-
-            Console.ReadKey();
-
         }
     }
 }
