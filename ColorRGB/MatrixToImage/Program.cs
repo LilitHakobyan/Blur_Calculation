@@ -9,14 +9,14 @@ namespace MatrixToImage
     {
         static void Main(string[] args)
         {
-            StreamReader readerDate = File.OpenText("E://Sample_dat.txt");
+            StreamReader readerDate = File.OpenText("E://new_dat.txt");//"E://Sample_dat.txt"
             string rang = readerDate.ReadLine();
             int height = Convert.ToInt32(Convert.ToString(rang[0]) + Convert.ToString(rang[1]));
             int width =  Convert.ToInt32(Convert.ToString(rang[3]) + Convert.ToString(rang[4])); ;
             int[,] colorMatrix = new int[height, width];
             Console.WriteLine(height);
             Console.WriteLine(width);
-            StreamReader readerMatrix = File.OpenText("E://Sample.txt");
+            StreamReader readerMatrix = File.OpenText("E://new.txt");//"E://Sample.txt"
             string matrix = string.Empty;
             string element = string.Empty;
             byte[] imageData=new byte[height*width];
@@ -31,7 +31,7 @@ namespace MatrixToImage
                 for (int j = 0; j < width; j++)
                 {
                     //k = j;
-                    while (y[k] != ' ')
+                    while ((y[k] != ' '))
                     {
 
                         element += Convert.ToString(y[k]);
