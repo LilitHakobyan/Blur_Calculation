@@ -45,6 +45,21 @@ namespace ConsoleApplication1
 
                     }
                 }
+
+                int[,] SobelV = new int[3, 3] { { 1, 0, -1 },
+                                            { 2, 0, -2 },
+                                            { 1, 0, -1 }
+                                                          };
+                for (int i = 0; i < height - 2; i++)
+                {
+                    for (int j = 0; j < width - 2; j++)
+
+                    {
+                        colorMatrix[i + 1, j + 1] = (byte)(colorMatrix[i, j] * SobelV[0, 0] + colorMatrix[i, j + 2] * SobelV[0, 2]
+                                               + colorMatrix[i + 1, j] * SobelV[1, 0] + colorMatrix[i + 1, j + 2] * SobelV[1, 2]
+                                               + colorMatrix[i + 2, j] * SobelV[2, 0] + colorMatrix[i + 2, j + 2] * SobelV[2, 2]);
+                    }
+                }
                 StreamWriter file = File.CreateText(@filePath + RGB + ".txt");
                 StreamWriter fileRenge = File.CreateText(@filePath + RGB + "_dat.txt");
 

@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{D7AF5971-5DF8-4E72-959A-E29A5C79010A}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>CovertBitmapToImage</RootNamespace>
-    <AssemblyName>CovertBitmapToImage</AssemblyName>
+    <RootNamespace>SobelMatrixToImage</RootNamespace>
+    <AssemblyName>SobelMatrixToImage</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
