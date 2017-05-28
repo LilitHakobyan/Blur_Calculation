@@ -9,14 +9,14 @@ namespace CovertBitmapToImage
         static void Main(string[] args)
         {
 
-            StreamReader readerDate = File.OpenText("E://Sample_dat.txt");//Sample
+            StreamReader readerDate = File.OpenText("E://1_dat.txt");//Sample
             string rang = readerDate.ReadLine();
             int height = Convert.ToInt32(Convert.ToString(rang[0]) + Convert.ToString(rang[1]));
             int width = Convert.ToInt32(Convert.ToString(rang[3]) + Convert.ToString(rang[4])); ;
             int[,] colorMatrix = new int[height, width];
             Console.WriteLine(height);
             Console.WriteLine(width);
-            StreamReader readerMatrix = File.OpenText("E://Sample.txt");//Sample
+            StreamReader readerMatrix = File.OpenText("E://1.txt");//Sample
             string matrix = string.Empty;
             string element = string.Empty;
             dynamic elementSobel = 0;
@@ -26,6 +26,10 @@ namespace CovertBitmapToImage
             for (int i = 0; i < height; i++)
             {
                 matrix = readerMatrix.ReadLine();
+                if (i>0)
+                {
+                    matrix = readerMatrix.ReadLine();
+                }
                 char[] y = matrix.ToCharArray();
                 // Console.WriteLine(matrix);
                 int k = 0;

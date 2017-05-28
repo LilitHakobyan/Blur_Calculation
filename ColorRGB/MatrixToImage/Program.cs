@@ -9,11 +9,11 @@ namespace MatrixToImage
     {
         static void Main(string[] args)
         {
-            StreamReader readerDate = File.OpenText("E://SV_dat.txt");//"E://Sample_dat.txt"
+            StreamReader readerDate = File.OpenText("E://1SV_dat.txt");//"E://Sample_dat.txt"
             string rang = readerDate.ReadLine();
             int height = Convert.ToInt32(Convert.ToString(rang[0]) + Convert.ToString(rang[1]));
             int width = Convert.ToInt32(Convert.ToString(rang[3]) + Convert.ToString(rang[4])); ;
-            var readerMatrix = File.ReadAllLines(@"E:/SV.txt");
+           // var readerMatrix = File.ReadAllLines(@"E:/SV.txt");
 
             //var height = readerMatrix.Length;
             //var width = readerMatrix[0].Length;
@@ -21,17 +21,21 @@ namespace MatrixToImage
 
             Console.WriteLine(height);
             Console.WriteLine(width);
-           // StreamReader readerMatrix = File.OpenText("E://SV.txt");//"E://Sample.txt"
+            StreamReader readerMatrix = File.OpenText("E://1SV.txt");//"E://Sample.txt"
             
             string matrix = string.Empty;
             string element = string.Empty;
             byte[] imageData=new byte[height*width];
             Color c = new Color();
             int s = 0;
-            for (int i = 0; i < height; i+=2)
+            for (int i = 0; i < height; i++)
             {
-               // matrix = readerMatrix.ReadLine();
-                matrix = readerMatrix[i];
+               matrix = readerMatrix.ReadLine();
+                if (i > 0)
+                {
+                    matrix = readerMatrix.ReadLine();
+                }
+                //  matrix = readerMatrix[i];
                 char[] y = matrix.ToCharArray();
                  Console.WriteLine(matrix);
                 int k = 0;
@@ -104,7 +108,7 @@ namespace MatrixToImage
                 }
             }
             Console.WriteLine(Bm);
-            Bm.Save(@"E:\newImageSobelV.bmp");
+            Bm.Save(@"E:\ImageSobelV.bmp");
 
 
             //  Console.WriteLine(colorMatrix);
