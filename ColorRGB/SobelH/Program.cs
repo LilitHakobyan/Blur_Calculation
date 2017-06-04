@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-namespace CovertBitmapToImage
+namespace SobelH
 {
     class Program
     {
@@ -26,7 +26,7 @@ namespace CovertBitmapToImage
             for (int i = 0; i < height; i++)
             {
                 matrix = readerMatrix.ReadLine();
-                //if (i>0)
+                //if (i > 0)
                 //{
                    // matrix = readerMatrix.ReadLine();
                 //}
@@ -56,19 +56,19 @@ namespace CovertBitmapToImage
 
             }
             int[,] SobelVMatrix = new int[height, width];
-            
-            int[,] SobelV = new int[3, 3] { { 1, 0, -1 },
-                                            { 2, 0, -2 },
-                                            { 1, 0, -1 }
+
+            int[,] SobelV = new int[3, 3] { { -1, -2, -1 },
+                                            { 0, 0, 0 },
+                                            { 1, 2, 1 }
                                                           };
-            for (int i = 0; i <  height -2; i++)
+            for (int i = 0; i < height - 2; i++)
             {
-                for (int j = 0; j < width-2; j++)
+                for (int j = 0; j < width - 2; j++)
 
                 {
-                   elementSobel = colorMatrix[i , j ]* SobelV[0,0] + colorMatrix[i , j + 2]*SobelV[0, 2]
-                                           + colorMatrix[i + 1, j ] * SobelV[1, 0] + colorMatrix[i + 1, j + 2]*SobelV[1, 2]
-                                           + colorMatrix[i + 2, j ] * SobelV[2, 0] + colorMatrix[i + 2, j + 2]*SobelV[2, 2];
+                    elementSobel = colorMatrix[i, j] * SobelV[0, 0] + colorMatrix[i, j + 2] * SobelV[0, 2]
+                                            + colorMatrix[i + 1, j] * SobelV[1, 0] + colorMatrix[i + 1, j + 2] * SobelV[1, 2]
+                                            + colorMatrix[i + 2, j] * SobelV[2, 0] + colorMatrix[i + 2, j + 2] * SobelV[2, 2];
 
                     if (elementSobel < 0)
                         elementSobel = 0;
@@ -86,8 +86,8 @@ namespace CovertBitmapToImage
                 }
                 Console.WriteLine();
             }
-            StreamWriter file = File.CreateText(@"E:\SobelV "+".txt");
-            StreamWriter fileRenge = File.CreateText(@"E:\SobelV"+"_dat.txt");
+            StreamWriter file = File.CreateText(@"E:\ SobelH " + ".txt");
+            StreamWriter fileRenge = File.CreateText(@"E:\ SobelH" + "_dat.txt");
 
             for (int i = 0; i < height; i++)
             {
@@ -106,3 +106,5 @@ namespace CovertBitmapToImage
         }
     }
 }
+
+

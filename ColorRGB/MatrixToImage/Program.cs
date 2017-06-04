@@ -9,7 +9,7 @@ namespace MatrixToImage
     {
         static void Main(string[] args)
         {
-            StreamReader readerDate = File.OpenText("E://1SV_dat.txt");//"E://Sample_dat.txt"
+            StreamReader readerDate = File.OpenText("E://SH_dat.txt");//"E://Sample_dat.txt"
             string rang = readerDate.ReadLine();
             int height = Convert.ToInt32(Convert.ToString(rang[0]) + Convert.ToString(rang[1]));
             int width = Convert.ToInt32(Convert.ToString(rang[3]) + Convert.ToString(rang[4])); ;
@@ -21,7 +21,7 @@ namespace MatrixToImage
 
             Console.WriteLine(height);
             Console.WriteLine(width);
-            StreamReader readerMatrix = File.OpenText("E://1SV.txt");//"E://Sample.txt"
+            StreamReader readerMatrix = File.OpenText("E://SH.txt");//"E://Sample.txt"
             
             string matrix = string.Empty;
             string element = string.Empty;
@@ -108,7 +108,7 @@ namespace MatrixToImage
                 }
             }
             Console.WriteLine(Bm);
-            Bm.Save(@"E:\ImageSobelV.bmp");
+            Bm.Save(@"E:\ImageSobelH.bmp");
 
 
             //  Console.WriteLine(colorMatrix);

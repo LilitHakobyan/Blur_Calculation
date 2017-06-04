@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26228.10
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColorRGB", "ColorRGB\ColorRGB.csproj", "{0E613714-66D9-4D8A-9799-EB37728BAE45}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatrixToImage", "MatrixToImage\MatrixToImage.csproj", "{B84ACCFD-730C-4E61-A0CC-D76D682E095D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CovertBitmapToImage", "CovertBitmapToImage\CovertBitmapToImage.csproj", "{D7AF5971-5DF8-4E72-959A-E29A5C79010A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SobelH", "SobelH\SobelH.csproj", "{AC7C0713-35F2-4CDE-B0C2-40C5D34C5897}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{D7AF5971-5DF8-4E72-959A-E29A5C79010A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D7AF5971-5DF8-4E72-959A-E29A5C79010A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D7AF5971-5DF8-4E72-959A-E29A5C79010A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC7C0713-35F2-4CDE-B0C2-40C5D34C5897}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC7C0713-35F2-4CDE-B0C2-40C5D34C5897}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC7C0713-35F2-4CDE-B0C2-40C5D34C5897}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC7C0713-35F2-4CDE-B0C2-40C5D34C5897}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
