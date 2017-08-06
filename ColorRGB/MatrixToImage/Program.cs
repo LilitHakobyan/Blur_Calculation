@@ -72,25 +72,7 @@ namespace MatrixToImage
                 Console.WriteLine();
             }
 
-            // Create a Bitmap object from a file.
-            //Bitmap myBitmap = new Bitmap(height, width);
-
-            // Set each pixel in myBitmap to black.
-           // for (int Xcount = 0; Xcount < myBitmap.Width; Xcount++)
-           // {
-              //  for (int Ycount = 0; Ycount < myBitmap.Height; Ycount++)
-              //  {
-              //      myBitmap.SetPixel(Xcount, Ycount, c);
-               // }
-          //  }
-          //  myBitmap.Save(@"E:\newImage.bmp");
-            // Draw myBitmap to the screen again.
-
-            //byte[] imageData = File.ReadAllBytes("E://Sample.txt");
-            //var ms = new MemoryStream(imageData);
-            //
-            //  Image image = Image.FromStream(ms);
-            //   image.Save(@"E:\newImage1.jpg");
+            
 
             Bitmap Bm = new Bitmap(width, height, PixelFormat.Format24bppRgb);
             var b = new Bitmap(width, height, PixelFormat.Format8bppIndexed);
