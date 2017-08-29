@@ -111,7 +111,75 @@ namespace CombineSobel
                                                                         Math.Pow(SobelHMatrix[i, j], 2)), (byte)255);
                }
             }
-            // fi Corner arctg(H/V)
+
+
+            int [] rowArray=new int[height];
+            int[] pillarArray = new int[width];
+            int sumRow = 0;
+            int sumPillar = 0;
+            for (int i = 0; i < height; i++)
+            {
+                for (int j = 0; j < width; j++)
+                {
+                    rowArray[i] += CombineSobelMatrix[i, j];
+                }
+                sumRow += rowArray[i];
+                Console.Write(rowArray[i]+" ");
+                
+            }
+            Console.WriteLine();
+            Console.WriteLine(sumRow);
+
+
+            for (int i = 0; i < width; i++)
+            {
+                for (int j = 0; j < height; j++)
+                {
+                    pillarArray[i] += CombineSobelMatrix[j, i];
+                }
+                sumPillar += pillarArray[i];
+                Console.Write(pillarArray[i]+" ");
+            }
+
+            Console.WriteLine();
+            Console.WriteLine(sumPillar);
+
+            double MRow = 0;
+            double MPillar = 0;
+
+            double DRow = 0;
+            double DPillar = 0;
+
+            for (int i = 0; i < height; i++)
+            {
+                MRow += i * rowArray[i];
+            }
+            MRow = MRow / sumRow;
+
+            for (int i = 0; i < height; i++)
+            {
+                DRow += i*i * rowArray[i];
+            }
+            DRow = DRow / sumRow-MRow*MRow;
+
+            for (int i = 0; i < width; i++)
+            {
+                MPillar += i * pillarArray[i];
+            }
+            MPillar = MPillar / sumPillar;
+
+            for (int i = 0; i < width; i++)
+            {
+                DPillar += i * i * pillarArray[i];
+            }
+            DPillar = DPillar / sumPillar - MPillar * MPillar;
+
+            Console.WriteLine(MRow+ "  "+MPillar);
+            Console.WriteLine(DRow + "  " + DPillar);
+            Console.WriteLine(MRow/DRow);
+            Console.WriteLine(MPillar/DPillar);
+            Console.ReadKey();
+            //// fi Corner arctg(H/V)
             int[,] CornerSobelMatrix = new int[height, width];
             for (int i = 0; i < height; i++)
             {
@@ -123,7 +191,7 @@ namespace CombineSobel
                     }
                     else
                     {
-                        CornerSobelMatrix[i, j] = Math.Min((byte)Math.Atan((double) SobelHMatrix[i, j] / SobelVMatrix[i, j]), (byte)255);
+                        CornerSobelMatrix[i, j] = Math.Min((byte)Math.Atan((double)SobelHMatrix[i, j] / SobelVMatrix[i, j]), (byte)255);
 
                     }
 
@@ -139,20 +207,20 @@ namespace CombineSobel
                 }
                 Console.WriteLine();
             }
-            StreamWriter file = File.CreateText(@"E:\SobelCorner " + ".txt");
-            StreamWriter fileRenge = File.CreateText(@"E:\SobelCorner" + "_dat.txt");
+            StreamWriter file = File.CreateText(@"E:\CombineSobelMatrix " + ".txt");
+            StreamWriter fileRenge = File.CreateText(@"E:\CombineSobelMatrix" + "_dat.txt");
 
             for (int i = 0; i < height; i++)
             {
                 for (int j = 0; j < width; j++)
                 {
                     {
-                        file.Write(CornerSobelMatrix[i, j] + " ");
+                        file.Write(CombineSobelMatrix[i, j] + " ");
                     }
                 }
-                file.WriteLine("\n");
+               file.WriteLine("\n");
 
-            }
+                }
             file.Close();
             fileRenge.WriteLine("{0} {1}", height, width);
             fileRenge.Close();
