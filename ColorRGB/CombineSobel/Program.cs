@@ -176,8 +176,15 @@ namespace CombineSobel
 
             Console.WriteLine(MRow+ "  "+MPillar);
             Console.WriteLine(DRow + "  " + DPillar);
-            Console.WriteLine(MRow/DRow);
-            Console.WriteLine(MPillar/DPillar);
+            Console.WriteLine(DRow/(MRow* MRow));//0.15
+            Console.WriteLine(DPillar/(MPillar * MPillar));//0.32
+            double M ;
+            double D ;
+            M = MRow + MPillar;
+            D = DRow + DPillar;
+            Console.WriteLine(D/(M*M)); // 0.12
+
+
             Console.ReadKey();
             //// fi Corner arctg(H/V)
             int[,] CornerSobelMatrix = new int[height, width];
