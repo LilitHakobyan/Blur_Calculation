@@ -4,6 +4,6 @@ The Sobel operator, sometimes called the Sobel–Feldman operator or Sobel filte
 particularly within edge detection algorithms where it creates an image emphasising edges.
 ![X](https://i.gyazo.com/4f7b69ea0150d094e770bfeb2da0c971.png)
 
-![](https://www.tutorialspoint.com/dip/images/sobel1.jpg) 
-  horizontal ![](https://www.tutorialspoint.com/dip/images/sobel2.jpg) 
-and vertical ![](https://www.tutorialspoint.com/dip/images/sobel3.jpg)
+![align-item="center"](https://www.tutorialspoint.com/dip/images/sobel1.jpg) 
+vertical   ![](https://www.tutorialspoint.com/dip/images/sobel2.jpg) 
+and  horizontal ![](https://www.tutorialspoint.com/dip/images/sobel3.jpg)
