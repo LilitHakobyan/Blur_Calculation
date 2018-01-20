@@ -5,7 +5,7 @@ particularly within edge detection algorithms where it creates an image emphasis
 ![X](https://i.gyazo.com/4f7b69ea0150d094e770bfeb2da0c971.png)
 
 <p align="center">
-![](https://www.tutorialspoint.com/dip/images/sobel1.jpg) 
-vertical   ![](https://www.tutorialspoint.com/dip/images/sobel2.jpg) 
-and  horizontal ![](https://www.tutorialspoint.com/dip/images/sobel3.jpg)
-  </p>
+<img src="https://www.tutorialspoint.com/dip/images/sobel1.jpg">
+vertical   <img src="https://www.tutorialspoint.com/dip/images/sobel2.jpg">
+and  horizontal <img src="https://www.tutorialspoint.com/dip/images/sobel3.jpg">
+</p>
