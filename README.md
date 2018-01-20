@@ -6,6 +6,10 @@ particularly within edge detection algorithms where it creates an image emphasis
 
 <p align="center">
 <img src="https://www.tutorialspoint.com/dip/images/sobel1.jpg">
+ </p>
+ <p align="center">
 vertical   <img src="https://www.tutorialspoint.com/dip/images/sobel2.jpg">
+  </p>
+<p align="center">
 and  horizontal <img src="https://www.tutorialspoint.com/dip/images/sobel3.jpg">
 </p>
