@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.6
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageProcessingClassLib", "ImageProcessingClassLib\ImageProcessingClassLib.csproj", "{AA2DC637-6E00-44BF-8DC7-C7756580E15E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1", "WpfApp1\WpfApp1.csproj", "{7DF3A9D8-DE2B-4050-A7CC-55C658A5A6FC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AA2DC637-6E00-44BF-8DC7-C7756580E15E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA2DC637-6E00-44BF-8DC7-C7756580E15E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA2DC637-6E00-44BF-8DC7-C7756580E15E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA2DC637-6E00-44BF-8DC7-C7756580E15E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DF3A9D8-DE2B-4050-A7CC-55C658A5A6FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DF3A9D8-DE2B-4050-A7CC-55C658A5A6FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DF3A9D8-DE2B-4050-A7CC-55C658A5A6FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DF3A9D8-DE2B-4050-A7CC-55C658A5A6FC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

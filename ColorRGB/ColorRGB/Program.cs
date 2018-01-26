@@ -7,7 +7,7 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
-
+            //
             Console.WriteLine("Please input image path");
             string bitmapFilePath = Convert.ToString(Console.ReadLine());
             Console.WriteLine("Please input R or G or B");
