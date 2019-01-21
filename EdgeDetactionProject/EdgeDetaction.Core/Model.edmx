@@ -1,0 +1,366 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="EdgeDetectionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Path" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Width" Type="bigint" Nullable="false" />
+          <Property Name="Height" Type="bigint" Nullable="false" />
+          <Property Name="Estimation" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Magnitude">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Path" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Width" Type="bigint" Nullable="false" />
+          <Property Name="Height" Type="bigint" Nullable="false" />
+          <Property Name="ImageId" Type="int" Nullable="false" />
+          <Property Name="SobelHId" Type="int" Nullable="false" />
+          <Property Name="SobelVId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SobelH">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Path" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Width" Type="bigint" Nullable="false" />
+          <Property Name="Height" Type="bigint" Nullable="false" />
+          <Property Name="ImageId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SobelV">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Path" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Width" Type="bigint" Nullable="false" />
+          <Property Name="Height" Type="bigint" Nullable="false" />
+          <Property Name="ImageId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Magnitude__Image__182C9B23">
+          <End Role="Image" Type="Self.Image" Multiplicity="1" />
+          <End Role="Magnitude" Type="Self.Magnitude" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Image">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Magnitude">
+              <PropertyRef Name="ImageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Magnitude__Sobel__1920BF5C">
+          <End Role="SobelH" Type="Self.SobelH" Multiplicity="1" />
+          <End Role="Magnitude" Type="Self.Magnitude" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SobelH">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Magnitude">
+              <PropertyRef Name="SobelHId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Magnitude__Sobel__1A14E395">
+          <End Role="SobelV" Type="Self.SobelV" Multiplicity="1" />
+          <End Role="Magnitude" Type="Self.Magnitude" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SobelV">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Magnitude">
+              <PropertyRef Name="SobelVId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SobelH__ImageId__1273C1CD">
+          <End Role="Image" Type="Self.Image" Multiplicity="1" />
+          <End Role="SobelH" Type="Self.SobelH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Image">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SobelH">
+              <PropertyRef Name="ImageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SobelV__ImageId__15502E78">
+          <End Role="Image" Type="Self.Image" Multiplicity="1" />
+          <End Role="SobelV" Type="Self.SobelV" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Image">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SobelV">
+              <PropertyRef Name="ImageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EdgeDetectionModelStoreContainer">
+          <EntitySet Name="Image" EntityType="Self.Image" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Magnitude" EntityType="Self.Magnitude" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SobelH" EntityType="Self.SobelH" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SobelV" EntityType="Self.SobelV" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Magnitude__Image__182C9B23" Association="Self.FK__Magnitude__Image__182C9B23">
+            <End Role="Image" EntitySet="Image" />
+            <End Role="Magnitude" EntitySet="Magnitude" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Magnitude__Sobel__1920BF5C" Association="Self.FK__Magnitude__Sobel__1920BF5C">
+            <End Role="SobelH" EntitySet="SobelH" />
+            <End Role="Magnitude" EntitySet="Magnitude" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Magnitude__Sobel__1A14E395" Association="Self.FK__Magnitude__Sobel__1A14E395">
+            <End Role="SobelV" EntitySet="SobelV" />
+            <End Role="Magnitude" EntitySet="Magnitude" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SobelH__ImageId__1273C1CD" Association="Self.FK__SobelH__ImageId__1273C1CD">
+            <End Role="Image" EntitySet="Image" />
+            <End Role="SobelH" EntitySet="SobelH" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SobelV__ImageId__15502E78" Association="Self.FK__SobelV__ImageId__15502E78">
+            <End Role="Image" EntitySet="Image" />
+            <End Role="SobelV" EntitySet="SobelV" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EdgeDetectionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Path" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Width" Type="Int64" Nullable="false" />
+          <Property Name="Height" Type="Int64" Nullable="false" />
+          <Property Name="Estimation" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <NavigationProperty Name="Magnitudes" Relationship="Self.FK__Magnitude__Image__182C9B23" FromRole="Image" ToRole="Magnitude" />
+          <NavigationProperty Name="SobelHs" Relationship="Self.FK__SobelH__ImageId__1273C1CD" FromRole="Image" ToRole="SobelH" />
+          <NavigationProperty Name="SobelVs" Relationship="Self.FK__SobelV__ImageId__15502E78" FromRole="Image" ToRole="SobelV" />
+        </EntityType>
+        <EntityType Name="Magnitude">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Path" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Width" Type="Int64" Nullable="false" />
+          <Property Name="Height" Type="Int64" Nullable="false" />
+          <Property Name="ImageId" Type="Int32" Nullable="false" />
+          <Property Name="SobelHId" Type="Int32" Nullable="false" />
+          <Property Name="SobelVId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Image" Relationship="Self.FK__Magnitude__Image__182C9B23" FromRole="Magnitude" ToRole="Image" />
+          <NavigationProperty Name="SobelH" Relationship="Self.FK__Magnitude__Sobel__1920BF5C" FromRole="Magnitude" ToRole="SobelH" />
+          <NavigationProperty Name="SobelV" Relationship="Self.FK__Magnitude__Sobel__1A14E395" FromRole="Magnitude" ToRole="SobelV" />
+        </EntityType>
+        <EntityType Name="SobelH">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Path" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Width" Type="Int64" Nullable="false" />
+          <Property Name="Height" Type="Int64" Nullable="false" />
+          <Property Name="ImageId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Image" Relationship="Self.FK__SobelH__ImageId__1273C1CD" FromRole="SobelH" ToRole="Image" />
+          <NavigationProperty Name="Magnitudes" Relationship="Self.FK__Magnitude__Sobel__1920BF5C" FromRole="SobelH" ToRole="Magnitude" />
+        </EntityType>
+        <EntityType Name="SobelV">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Path" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Width" Type="Int64" Nullable="false" />
+          <Property Name="Height" Type="Int64" Nullable="false" />
+          <Property Name="ImageId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Image" Relationship="Self.FK__SobelV__ImageId__15502E78" FromRole="SobelV" ToRole="Image" />
+          <NavigationProperty Name="Magnitudes" Relationship="Self.FK__Magnitude__Sobel__1A14E395" FromRole="SobelV" ToRole="Magnitude" />
+        </EntityType>
+        <Association Name="FK__Magnitude__Image__182C9B23">
+          <End Role="Image" Type="Self.Image" Multiplicity="1" />
+          <End Role="Magnitude" Type="Self.Magnitude" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Image">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Magnitude">
+              <PropertyRef Name="ImageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SobelH__ImageId__1273C1CD">
+          <End Role="Image" Type="Self.Image" Multiplicity="1" />
+          <End Role="SobelH" Type="Self.SobelH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Image">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SobelH">
+              <PropertyRef Name="ImageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SobelV__ImageId__15502E78">
+          <End Role="Image" Type="Self.Image" Multiplicity="1" />
+          <End Role="SobelV" Type="Self.SobelV" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Image">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SobelV">
+              <PropertyRef Name="ImageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Magnitude__Sobel__1920BF5C">
+          <End Role="SobelH" Type="Self.SobelH" Multiplicity="1" />
+          <End Role="Magnitude" Type="Self.Magnitude" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SobelH">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Magnitude">
+              <PropertyRef Name="SobelHId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Magnitude__Sobel__1A14E395">
+          <End Role="SobelV" Type="Self.SobelV" Multiplicity="1" />
+          <End Role="Magnitude" Type="Self.Magnitude" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SobelV">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Magnitude">
+              <PropertyRef Name="SobelVId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EdgeDetectionEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Images" EntityType="Self.Image" />
+          <EntitySet Name="Magnitudes" EntityType="Self.Magnitude" />
+          <EntitySet Name="SobelHs" EntityType="Self.SobelH" />
+          <EntitySet Name="SobelVs" EntityType="Self.SobelV" />
+          <AssociationSet Name="FK__Magnitude__Image__182C9B23" Association="Self.FK__Magnitude__Image__182C9B23">
+            <End Role="Image" EntitySet="Images" />
+            <End Role="Magnitude" EntitySet="Magnitudes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SobelH__ImageId__1273C1CD" Association="Self.FK__SobelH__ImageId__1273C1CD">
+            <End Role="Image" EntitySet="Images" />
+            <End Role="SobelH" EntitySet="SobelHs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SobelV__ImageId__15502E78" Association="Self.FK__SobelV__ImageId__15502E78">
+            <End Role="Image" EntitySet="Images" />
+            <End Role="SobelV" EntitySet="SobelVs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Magnitude__Sobel__1920BF5C" Association="Self.FK__Magnitude__Sobel__1920BF5C">
+            <End Role="SobelH" EntitySet="SobelHs" />
+            <End Role="Magnitude" EntitySet="Magnitudes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Magnitude__Sobel__1A14E395" Association="Self.FK__Magnitude__Sobel__1A14E395">
+            <End Role="SobelV" EntitySet="SobelVs" />
+            <End Role="Magnitude" EntitySet="Magnitudes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EdgeDetectionModelStoreContainer" CdmEntityContainer="EdgeDetectionEntities">
+          <EntitySetMapping Name="Images">
+            <EntityTypeMapping TypeName="EdgeDetectionModel.Image">
+              <MappingFragment StoreEntitySet="Image">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Estimation" ColumnName="Estimation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Magnitudes">
+            <EntityTypeMapping TypeName="EdgeDetectionModel.Magnitude">
+              <MappingFragment StoreEntitySet="Magnitude">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="ImageId" ColumnName="ImageId" />
+                <ScalarProperty Name="SobelHId" ColumnName="SobelHId" />
+                <ScalarProperty Name="SobelVId" ColumnName="SobelVId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SobelHs">
+            <EntityTypeMapping TypeName="EdgeDetectionModel.SobelH">
+              <MappingFragment StoreEntitySet="SobelH">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="ImageId" ColumnName="ImageId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SobelVs">
+            <EntityTypeMapping TypeName="EdgeDetectionModel.SobelV">
+              <MappingFragment StoreEntitySet="SobelV">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="ImageId" ColumnName="ImageId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
