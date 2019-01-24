@@ -50,10 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Image.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Magnitude.cs">
+    <Compile Include="MatrixDetection.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model.Context.cs">
@@ -77,12 +74,6 @@
     <Compile Include="Repasitorys\Implemantation\ImageDAL.cs" />
     <Compile Include="Repasitorys\Interfaces\IBaseDAL.cs" />
     <Compile Include="Repasitorys\Interfaces\IImageDAL.cs" />
-    <Compile Include="SobelH.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SobelV.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

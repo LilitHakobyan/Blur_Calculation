@@ -12,8 +12,7 @@ namespace EdgeDetaction.Core
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    using EdgeDetaction.Core.Repasitorys;
-
+    
     public partial class EdgeDetectionEntities : DbContext
     {
         public EdgeDetectionEntities()
@@ -26,14 +25,6 @@ namespace EdgeDetaction.Core
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Image> Images { get; set; }
-        public virtual DbSet<Magnitude> Magnitudes { get; set; }
-        public virtual DbSet<SobelH> SobelHs { get; set; }
-        public virtual DbSet<SobelV> SobelVs { get; set; }
-
-        public static implicit operator EdgeDetectionEntities(EdgeDetectionDal v)
-        {
-            throw new NotImplementedException();
-        }
+        public virtual DbSet<MatrixDetection> MatrixDetections { get; set; }
     }
 }

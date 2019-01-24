@@ -13,23 +13,23 @@ namespace EdgeDetaction.Core.Repasitorys.Implemantation
         {
 
         }
-        public List<Image> GetAll()
+        public List<MatrixDetection> GetAll()
         {
-            return DbContext.Images.ToList();
+            return DbContext.MatrixDetections.ToList();
         }
 
-        public void Add(Image image)
+        public void Add(MatrixDetection MatrixDetection)
         {
-            DbContext.Images.Add(image);
+            DbContext.MatrixDetections.Add(MatrixDetection);
             DbContext.SaveChanges();
         }
 
-        public Image GetByName(Guid name)
+        public MatrixDetection GetByName(Guid name)
         {
             throw new NotImplementedException();
         }
 
-        public Image GetById(int id)
+        public MatrixDetection GetById(int id)
         {
             throw new NotImplementedException();
         }

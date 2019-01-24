@@ -12,19 +12,18 @@ namespace EdgeDetaction.Core
     using System;
     using System.Collections.Generic;
     
-    public partial class Magnitude
+    public partial class MatrixDetection
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Path { get; set; }
-        public long Width { get; set; }
-        public long Height { get; set; }
-        public int ImageId { get; set; }
-        public int SobelHId { get; set; }
-        public int SobelVId { get; set; }
-    
-        public virtual Image Image { get; set; }
-        public virtual SobelH SobelH { get; set; }
-        public virtual SobelV SobelV { get; set; }
+        public string Type { get; set; }
+        public Nullable<int> BaseId { get; set; }
+        public Nullable<int> Parent1 { get; set; }
+        public Nullable<int> Parent2 { get; set; }
+        public int Height { get; set; }
+        public int Width { get; set; }
+        public Nullable<decimal> Estimation { get; set; }
+        public string Component { get; set; }
+        public byte[] Matrix { get; set; }
     }
 }

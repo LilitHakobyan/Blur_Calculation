@@ -5,15 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="3296a06f142d4e2ca9ec448ed076e2c8" Name="Diagram1">
-        <EntityTypeShape EntityType="EdgeDetectionModel.Image" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EdgeDetectionModel.Magnitude" Width="1.5" PointX="0.625" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EdgeDetectionModel.SobelH" Width="1.5" PointX="4.125" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EdgeDetectionModel.SobelV" Width="1.5" PointX="5.375" PointY="10.125" IsExpanded="true" />
-        <AssociationConnector Association="EdgeDetectionModel.FK__Magnitude__Image__182C9B23" ManuallyRouted="false" />
-        <AssociationConnector Association="EdgeDetectionModel.FK__SobelH__ImageId__1273C1CD" ManuallyRouted="false" />
-        <AssociationConnector Association="EdgeDetectionModel.FK__SobelV__ImageId__15502E78" ManuallyRouted="false" />
-        <AssociationConnector Association="EdgeDetectionModel.FK__Magnitude__Sobel__1920BF5C" ManuallyRouted="false" />
-        <AssociationConnector Association="EdgeDetectionModel.FK__Magnitude__Sobel__1A14E395" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="EdgeDetectionModel.MatrixDetection" Width="1.5" PointX="0.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

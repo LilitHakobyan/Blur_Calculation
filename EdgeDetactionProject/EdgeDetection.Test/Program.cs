@@ -15,8 +15,8 @@ namespace EdgeDetection.Test
         {
             var formattableString = $"{Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName}\\statics\\bitmap.bmp";
             var dal = new EdgeDetectionDal(new EdgeDetectionEntities());
-            var images = dal.ImageDal.GetAll();
-            var image = new Image {Name = Guid.NewGuid().ToString()};
+           
+            var image = new MatrixDetection() {Name = Guid.NewGuid().ToString(),};
             dal.ImageDal.Add(image);
         }
     }
