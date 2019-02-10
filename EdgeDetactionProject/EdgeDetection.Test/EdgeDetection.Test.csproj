@@ -42,6 +42,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -58,13 +59,21 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EdgeDetaction.Core\EdgeDetaction.Core.csproj">
+    <ProjectReference Include="..\EdgeDetaction.Core\EdgeDetaction.DAL.csproj">
       <Project>{FECD45FC-9D33-4817-AE85-EBD3A4E8D2AF}</Project>
+      <Name>EdgeDetaction.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EdgeDetaction.Data\EdgeDetaction.Core.csproj">
+      <Project>{d98a8488-ff0c-49aa-8e81-288fdff58c48}</Project>
       <Name>EdgeDetaction.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Statics\Bitmap.bmp" />
+    <Content Include="Statics\hs.png" />
+    <Content Include="Statics\lena.jpg" />
+    <Content Include="Statics\sobel1.jpg" />
+    <Content Include="Statics\venice.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

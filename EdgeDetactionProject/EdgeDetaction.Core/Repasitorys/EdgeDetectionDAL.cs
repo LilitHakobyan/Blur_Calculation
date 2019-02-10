@@ -1,8 +1,8 @@
 ﻿using System;
-using EdgeDetaction.Core.Repasitorys.Implemantation;
-using EdgeDetaction.Core.Repasitorys.Interfaces;
+using EdgeDetaction.DAL.Repasitorys.Implemantation;
+using EdgeDetaction.DAL.Repasitorys.Interfaces;
 
-namespace EdgeDetaction.Core.Repasitorys
+namespace EdgeDetaction.DAL.Repasitorys
 {
     public class EdgeDetectionDal
     {

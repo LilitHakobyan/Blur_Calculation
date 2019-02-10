@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EdgeDetaction.Core
+namespace EdgeDetaction.DAL
 {
     using System;
     using System.Data.Entity;

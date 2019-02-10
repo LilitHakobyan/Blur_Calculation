@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using EdgeDetaction.Core.Repasitorys.Interfaces;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
+using System.ComponentModel;
+using EdgeDetaction.DAL.Repasitorys.Interfaces;
 
-namespace EdgeDetaction.Core.Repasitorys.Implemantation
+namespace EdgeDetaction.DAL.Repasitorys.Implemantation
 {
     class ImageDal : BaseDal, IImageDal
     {
@@ -23,15 +25,30 @@ namespace EdgeDetaction.Core.Repasitorys.Implemantation
             DbContext.MatrixDetections.Add(MatrixDetection);
             DbContext.SaveChanges();
         }
-
-        public MatrixDetection GetByName(Guid name)
+      
+        public MatrixDetection GetByName(string name)
         {
-            throw new NotImplementedException();
+            return DbContext.MatrixDetections.SingleOrDefault(image => image.Name == name);
         }
 
         public MatrixDetection GetById(int id)
         {
-            throw new NotImplementedException();
+            return DbContext.MatrixDetections.Find(id);
+        }
+
+        public MatrixDetection GetSobelV(int id)
+        {
+            return DbContext.MatrixDetections.SingleOrDefault(image => image.Parent1 == id);
+        }
+
+        public MatrixDetection GetSobelH(int id)
+        {
+            return DbContext.MatrixDetections.SingleOrDefault(image => image.Parent2 == id);
+        }
+
+        public MatrixDetection GetMagnitude(int id)
+        {
+            return DbContext.MatrixDetections.SingleOrDefault(image => image.BaseId == id);
         }
     }
 }

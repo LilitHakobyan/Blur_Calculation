@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using EdgeDetaction.Core.Repasitorys.Interfaces;
+using EdgeDetaction.DAL.Repasitorys.Interfaces;
 
-namespace EdgeDetaction.Core.Repasitorys.Implemantation
+namespace EdgeDetaction.DAL.Repasitorys.Implemantation
 {
     class BaseDal:IBaseDal
     {
@@ -15,13 +15,6 @@ namespace EdgeDetaction.Core.Repasitorys.Implemantation
         {
             DbContext = dbContext;
         }
-        public void ShowImage(string path)
-        {
-            throw new NotImplementedException();
-        }
-        public void ShowMatrix(string path)
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }

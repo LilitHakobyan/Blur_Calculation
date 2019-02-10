@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\van19\Source\Repos\Edge-Detection\EdgeDetactionProject\EdgeDetaction.Core\Model.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\lilit.hakobyan\Source\Repos\Edge-Detection\EdgeDetactionProject\EdgeDetaction.Core\Model.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

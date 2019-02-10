@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EdgeDetaction.Core
+namespace EdgeDetaction.DAL
 {
     using System;
     using System.Collections.Generic;
@@ -17,9 +17,9 @@ namespace EdgeDetaction.Core
         public int Id { get; set; }
         public string Name { get; set; }
         public string Type { get; set; }
-        public Nullable<int> BaseId { get; set; }
-        public Nullable<int> Parent1 { get; set; }
-        public Nullable<int> Parent2 { get; set; }
+        public Nullable<int> BaseId { get; set; } //Magnitude  ??????
+        public Nullable<int> Parent1 { get; set; } //Sobel V
+        public Nullable<int> Parent2 { get; set; } //Sobel H
         public int Height { get; set; }
         public int Width { get; set; }
         public Nullable<decimal> Estimation { get; set; }

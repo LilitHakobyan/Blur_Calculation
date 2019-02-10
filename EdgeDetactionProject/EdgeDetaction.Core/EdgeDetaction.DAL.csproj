@@ -7,8 +7,8 @@
     <ProjectGuid>{FECD45FC-9D33-4817-AE85-EBD3A4E8D2AF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EdgeDetaction.Core</RootNamespace>
-    <AssemblyName>EdgeDetaction.Core</AssemblyName>
+    <RootNamespace>EdgeDetaction.DAL</RootNamespace>
+    <AssemblyName>EdgeDetaction.DAL</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -40,6 +40,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />

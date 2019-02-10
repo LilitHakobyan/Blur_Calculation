@@ -103,9 +103,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EdgeDetaction.Core\EdgeDetaction.Core.csproj">
+    <ProjectReference Include="..\EdgeDetaction.Core\EdgeDetaction.DAL.csproj">
       <Project>{fecd45fc-9d33-4817-ae85-ebd3a4e8d2af}</Project>
-      <Name>EdgeDetaction.Core</Name>
+      <Name>EdgeDetaction.DAL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
