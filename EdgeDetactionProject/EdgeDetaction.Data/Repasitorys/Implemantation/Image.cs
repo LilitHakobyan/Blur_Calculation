@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.ComponentModel;
+using EdgeDetaction.Core.Repasitorys.Enums;
 
 namespace EdgeDetaction.Core.Repasitorys.Implemantation
 {
@@ -16,16 +17,16 @@ namespace EdgeDetaction.Core.Repasitorys.Implemantation
 
         }  
        
-        public byte[,] ConvertImageToMatrix(string bitmapFilePath, string component,ref int width,ref int hight)
+        public byte[,] ConvertImageToMatrix(string bitmapFilePath, CompTypes component,ref int width,ref int hight)
         {
             Bitmap b1 = new Bitmap(bitmapFilePath);
              hight = b1.Height;
              width = b1.Width;
             byte[,] colorMatrix = new byte[width, hight];
 
-            switch (component.ToUpper())
+            switch (component)
             {
-                case "R":
+                case CompTypes.R:
                     for (int j = 0; j < hight; j++)
                     {
                         for (int i = 0; i < width; i++)
@@ -34,7 +35,7 @@ namespace EdgeDetaction.Core.Repasitorys.Implemantation
                         }
                     }
                     break;
-                case "G":
+                case CompTypes.G:
                     for (int j = 0; j < hight; j++)
                     {
                         for (int i = 0; i < width; i++)
@@ -43,7 +44,7 @@ namespace EdgeDetaction.Core.Repasitorys.Implemantation
                         }
                     }
                     break;
-                case "B ":
+                case CompTypes.B:
                     for (int j = 0; j < hight; j++)
                     {
                         for (int i = 0; i < width; i++)
@@ -188,6 +189,38 @@ namespace EdgeDetaction.Core.Repasitorys.Implemantation
             }
             return CombineSobelMatrix;
 
+        }
+        public dynamic Estimation (byte[,] magnitudeMatrix)
+        {
+            dynamic myu = 0;
+            dynamic nyuPow2 = 0;
+            dynamic sum = 0;
+            dynamic sum1 = 0;
+            for (int j = 0; j < magnitudeMatrix.GetLength(1); j++)
+            {
+
+                for (int i = 0; i < magnitudeMatrix.GetLength(0); i++)
+
+                {
+                    sum += magnitudeMatrix[i, j];
+                }
+
+            }
+            myu = sum / magnitudeMatrix.GetLength(0) * magnitudeMatrix.GetLength(1);
+
+            for (int j = 0; j < magnitudeMatrix.GetLength(1); j++)
+            {
+
+                for (int i = 0; i < magnitudeMatrix.GetLength(0); i++)
+
+                {
+                    sum1 += Math.Pow(magnitudeMatrix[i, j]-myu,2);
+                }
+
+            }
+            nyuPow2 = sum1 / (magnitudeMatrix.GetLength(0) * magnitudeMatrix.GetLength(1) - 1);
+
+            return nyuPow2 / myu;
         }
         public Bitmap ConvertArrayToImage(byte[] imageData, int width ,int height)
         { 

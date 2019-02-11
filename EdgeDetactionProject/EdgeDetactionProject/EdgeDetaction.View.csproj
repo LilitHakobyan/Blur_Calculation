@@ -107,6 +107,10 @@
       <Project>{fecd45fc-9d33-4817-ae85-ebd3a4e8d2af}</Project>
       <Name>EdgeDetaction.DAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EdgeDetaction.Data\EdgeDetaction.Core.csproj">
+      <Project>{d98a8488-ff0c-49aa-8e81-288fdff58c48}</Project>
+      <Name>EdgeDetaction.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EdgeDetaction.Core.Repasitorys.Enums;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 
@@ -6,12 +7,13 @@ namespace EdgeDetaction.Core.Repasitorys.Interfaces
 {
     public interface IImage:IBase
     {
-       byte[,] ConvertImageToMatrix(string bitmapFilePath, string component, ref int width, ref int hight);
+       byte[,] ConvertImageToMatrix(string bitmapFilePath, CompTypes component, ref int width, ref int hight);
        byte[] ConvertMatreixToArray(byte[,] matrix);
        byte[,] ConvertArrayToMatrix(byte[] array, int width, int hight);
        byte[,] SobelHOperation(byte[,] matrix);
        byte[,] SobelVOperation(byte[,] matrix);
        byte[,] Magnitude(byte[,] SobelVMatrix, byte[,] SobelHMatrix);
        Bitmap ConvertArrayToImage(byte[] imageData, int width, int height);
+       dynamic Estimation(byte[,] magnitudeMatrix);
     }
 }

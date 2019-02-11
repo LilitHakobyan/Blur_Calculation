@@ -7,6 +7,18 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <TextBlock x:Name="imgpathtextbox" Margin="47,72,0,0" TextWrapping="Wrap" Text="Image Path" VerticalAlignment="Top" Height="35" Width="215" OpacityMask="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" HorizontalAlignment="Left">
+            <TextBlock.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="0"/>
+                    <GradientStop Color="#FF551E1E" Offset="1"/>
+                </LinearGradientBrush>
+            </TextBlock.Foreground>
+        </TextBlock>
+        <Button Content="Browse" HorizontalAlignment="Left" Height="35" Margin="278,72,0,0" VerticalAlignment="Top" Width="79" Click="Browse_Click"/>
+        <Button x:Name="CreateAddMatrix" Content="Create Matrix" HorizontalAlignment="Left" Height="35" Margin="47,134,0,0" VerticalAlignment="Top" Width="79" Click="CreateAddMatrix_Click"/>
+        <Label Content="Component" HorizontalAlignment="Left" Height="26" Margin="47,189,0,0" VerticalAlignment="Top" Width="79" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}"/>
+        <ComboBox  Name="compComboBox" HorizontalAlignment="Left" Height="26" Margin="160,189,0,0" VerticalAlignment="Top" Width="77"/>
+
     </Grid>
 </Window>
