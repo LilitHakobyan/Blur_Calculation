@@ -6,6 +6,7 @@ using System.Drawing.Imaging;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -13,6 +14,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
@@ -210,40 +212,28 @@ namespace EdgeDetactionProject
             if (i > -1)
             {
                 MatrixDetection rowobj = (MatrixDetection)imgDataGrid.Items[i];  // this give you access to the row
-             Bitmap img = core.Image.ConvertArrayToImage(rowobj.Matrix, rowobj.Width, rowobj.Height);
+                Bitmap img = core.Image.ConvertArrayToImage(rowobj.Matrix, rowobj.Width, rowobj.Height);
 
-
-                Imagebox.Source = img;
+                Imagebox.Source = ImageSourceForBitmap(img);
             }
             else
             {
 
             }
         }
-        public System.Drawing.Image byteArrayToImage(byte[] byteArrayIn)
-        {
-            using (MemoryStream mStream = new MemoryStream(byteArrayIn))
-            {
-                return System.Drawing.Image.FromStream(mStream);
-            }
-        }
+        //convet bitmap to imagesource need to be there ((
+        [DllImport("gdi32.dll", EntryPoint = "DeleteObject")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool DeleteObject([In] IntPtr hObject);
 
-    public BitmapImage ToImage(byte[] array)
+        private ImageSource ImageSourceForBitmap(Bitmap bmp)
         {
-            //if (array == null || array.Length == 0) return null;
-            //var image = new BitmapImage();
-            //using (var mem = new MemoryStream(array))
-            //{
-            //    mem.Position = 0;
-            //    image.BeginInit();
-            //    image.CreateOptions = BitmapCreateOptions.PreservePixelFormat;
-            //    image.CacheOption = BitmapCacheOption.OnLoad;
-            //    image.UriSource = null;
-            //    image.StreamSource = mem;
-            //    image.EndInit();
-            //}
-            //image.Freeze();
-            //return image;
+            var handle = bmp.GetHbitmap();
+            try
+            {
+                return Imaging.CreateBitmapSourceFromHBitmap(handle, IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
+            }
+            finally { DeleteObject(handle); }
         }
     }
 }

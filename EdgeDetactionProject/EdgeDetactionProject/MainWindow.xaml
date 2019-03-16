@@ -37,6 +37,9 @@
         <ComboBox  Name="compComboBox" HorizontalAlignment="Left" Height="26" Margin="694,5,0,0" VerticalAlignment="Top" Width="77" RenderTransformOrigin="0.405,0"/>
         <DataGrid  Name="imgDataGrid" SelectionChanged="ImgDataGrid_OnSelectionChanged"  HorizontalAlignment="Left" Height="298" Margin="10,112,0,0" VerticalAlignment="Top" Width="774" ScrollViewer.VerticalScrollBarVisibility="Auto" />
         <Button Content="Refresh" HorizontalAlignment="Left" Height="35" Margin="694,44,0,0" VerticalAlignment="Top" Width="77" Click="Button_Click"/>
-        <Image  Name="Imagebox"  HorizontalAlignment="Left" Height="298" Margin="841,112,0,0" VerticalAlignment="Top" Width="334"/>
+
+        <Image x:Name="Imagebox" Stretch="UniformToFill" 
+                StretchDirection="Both" 
+                HorizontalAlignment="Left" Height="298" Margin="841,112,0,0" VerticalAlignment="Top" Width="334"/>
     </Grid>
 </Window>
