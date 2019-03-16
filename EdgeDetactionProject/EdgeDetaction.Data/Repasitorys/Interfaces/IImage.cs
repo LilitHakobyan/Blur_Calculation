@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Windows.Media.Imaging;
 
 namespace EdgeDetaction.Core.Repasitorys.Interfaces
 {
@@ -14,6 +15,6 @@ namespace EdgeDetaction.Core.Repasitorys.Interfaces
        byte[,] SobelVOperation(byte[,] matrix);
        byte[,] Magnitude(byte[,] SobelVMatrix, byte[,] SobelHMatrix);
        Bitmap ConvertArrayToImage(byte[] imageData, int width, int height);
-       dynamic Estimation(byte[,] magnitudeMatrix);
+       decimal Estimation(byte[,] magnitudeMatrix);
     }
 }

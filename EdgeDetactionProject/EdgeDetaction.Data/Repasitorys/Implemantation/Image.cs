@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.ComponentModel;
+using System.Windows.Media.Imaging;
 using EdgeDetaction.Core.Repasitorys.Enums;
 
 namespace EdgeDetaction.Core.Repasitorys.Implemantation
@@ -173,29 +174,33 @@ namespace EdgeDetaction.Core.Repasitorys.Implemantation
         }
         public byte[,] Magnitude(byte[,] SobelVMatrix, byte [,] SobelHMatrix)
         {
-            byte[,] CombineSobelMatrix = new byte[SobelHMatrix.GetLength(0), SobelHMatrix.GetLength(1)];
-
-            for (int j = 0; j < SobelHMatrix.GetLength(1); j++)
+            byte[,] CombineSobelMatrix = new byte[SobelHMatrix.GetLength(0)-2, SobelHMatrix.GetLength(1)-2];
+            int k = 0;
+            int m = 0;
+            for (int j = 1; j < SobelHMatrix.GetLength(1)-1; j++)
             {
-
-                for (int i = 0; i < SobelHMatrix.GetLength(0); i++)
+                for (int i = 1; i < SobelHMatrix.GetLength(0)-1; i++)
 
                 {
-                    CombineSobelMatrix[i, j] = Math.Min((byte)Math.Sqrt(Math.Pow(SobelVMatrix[i, j], 2) +
+                    CombineSobelMatrix[m, k] = Math.Min((byte)Math.Sqrt(Math.Pow(SobelVMatrix[i, j], 2) +
 
-                                                                         Math.Pow(SobelHMatrix[i, j], 2)), (byte)255);
+                                                                        Math.Pow(SobelHMatrix[i, j], 2)), (byte)255);
+                    m++;
                 }
+
+                m = 0;
+                k++;
 
             }
             return CombineSobelMatrix;
 
         }
-        public dynamic Estimation (byte[,] magnitudeMatrix)
+        public decimal Estimation (byte[,] magnitudeMatrix)
         {
-            dynamic myu = 0;
-            dynamic nyuPow2 = 0;
-            dynamic sum = 0;
-            dynamic sum1 = 0;
+            double myu = 0;
+            double nyuPow2 = 0;
+            double sum = 0;
+            double sum1 = 0;
             for (int j = 0; j < magnitudeMatrix.GetLength(1); j++)
             {
 
@@ -206,8 +211,8 @@ namespace EdgeDetaction.Core.Repasitorys.Implemantation
                 }
 
             }
-            myu = sum / magnitudeMatrix.GetLength(0) * magnitudeMatrix.GetLength(1);
-
+            myu = sum /((magnitudeMatrix.GetLength(0)) * (magnitudeMatrix.GetLength(1)));
+          var  myuPow2 = Math.Pow(myu, 2);
             for (int j = 0; j < magnitudeMatrix.GetLength(1); j++)
             {
 
@@ -218,9 +223,10 @@ namespace EdgeDetaction.Core.Repasitorys.Implemantation
                 }
 
             }
-            nyuPow2 = sum1 / (magnitudeMatrix.GetLength(0) * magnitudeMatrix.GetLength(1) - 1);
 
-            return nyuPow2 / myu;
+            nyuPow2 = sum1 / ((magnitudeMatrix.GetLength(0)) * (magnitudeMatrix.GetLength(1)) - 1);
+
+            return Convert.ToDecimal(nyuPow2/ myuPow2);
         }
         public Bitmap ConvertArrayToImage(byte[] imageData, int width ,int height)
         { 

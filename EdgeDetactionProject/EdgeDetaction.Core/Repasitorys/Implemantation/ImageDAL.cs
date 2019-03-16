@@ -50,5 +50,45 @@ namespace EdgeDetaction.DAL.Repasitorys.Implemantation
         {
             return DbContext.MatrixDetections.SingleOrDefault(image => image.BaseId == id);
         }
+
+        public void SetSobelV(int parentid, int sobelVid)
+        {
+            var matrixParent = GetById(parentid);
+            matrixParent.Parent1 = sobelVid;
+            DbContext.MatrixDetections.Attach(matrixParent);
+            DbContext.Entry(matrixParent).Property(x => x.Parent1).IsModified = true;
+            DbContext.SaveChanges();
+        }
+
+        public void SetSobelH(int parentid, int sobelHid)
+        {
+            var matrixParent = GetById(parentid);
+            matrixParent.Parent2 = sobelHid;
+            DbContext.MatrixDetections.Attach(matrixParent);
+            DbContext.Entry(matrixParent).Property(x => x.Parent2).IsModified = true;
+            DbContext.SaveChanges();
+        }
+        public void SetMagnitude(int parentid, int magId)
+        {
+            var matrixParent = GetById(parentid);
+            matrixParent.BaseId = magId;
+            DbContext.MatrixDetections.Attach(matrixParent);
+            DbContext.Entry(matrixParent).Property(x => x.BaseId).IsModified = true;
+            DbContext.SaveChanges();
+        }
+
+        public List<MatrixDetection> GetAllRoots()
+        {
+            return DbContext.MatrixDetections.Where(image => image.Type == "Default").ToList();
+        }
+
+        public void SetEstimation(int id, decimal estimaion)
+        {
+            var matrixParent = GetById(id);
+            matrixParent.Estimation = estimaion;
+            DbContext.MatrixDetections.Attach(matrixParent);
+            DbContext.Entry(matrixParent).Property(x => x.Estimation).IsModified = true;
+            DbContext.SaveChanges();
+        }
     }
 }

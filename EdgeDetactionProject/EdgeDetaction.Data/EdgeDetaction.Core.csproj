@@ -31,6 +31,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -46,6 +47,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repasitorys\EdgeDetectionCore.cs" />
     <Compile Include="Repasitorys\Enums\CompTypes.cs" />
+    <Compile Include="Repasitorys\Enums\MatrixTypes.cs" />
     <Compile Include="Repasitorys\Implemantation\Base.cs" />
     <Compile Include="Repasitorys\Implemantation\Image.cs" />
     <Compile Include="Repasitorys\Implemantation\Localization.cs" />

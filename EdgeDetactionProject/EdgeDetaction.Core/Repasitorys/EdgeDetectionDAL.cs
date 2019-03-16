@@ -6,15 +6,9 @@ namespace EdgeDetaction.DAL.Repasitorys
 {
     public class EdgeDetectionDal
     {
-
-
         private EdgeDetectionEntities _edgeDetectionEntities;
 
         private string _connectionString;
-
-
-
-
 
         private EdgeDetectionEntities EdgeDetectionContext => _edgeDetectionEntities ?? (_edgeDetectionEntities = new EdgeDetectionEntities());
 
@@ -22,7 +16,6 @@ namespace EdgeDetaction.DAL.Repasitorys
         {
             _edgeDetectionEntities = edgeDetectionEntities;
         }
-
 
         private IImageDal _imageDal;
 
@@ -47,10 +40,6 @@ namespace EdgeDetaction.DAL.Repasitorys
             _disposed = true;
 
         }
-
-
-
-
 
         public void Dispose()
         {
