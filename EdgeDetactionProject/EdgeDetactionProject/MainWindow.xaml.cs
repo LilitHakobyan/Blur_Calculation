@@ -235,5 +235,14 @@ namespace EdgeDetactionProject
             }
             finally { DeleteObject(handle); }
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            imgDataGrid.ItemsSource = null;
+            compComboBox.ItemsSource = Enum.GetValues(typeof(CompTypes));
+            compComboBox.SelectedItem = CompTypes.R;
+            listOfImage = dal.ImageDal.GetAll();
+            imgDataGrid.ItemsSource = listOfImage;
+        }
     }
 }
