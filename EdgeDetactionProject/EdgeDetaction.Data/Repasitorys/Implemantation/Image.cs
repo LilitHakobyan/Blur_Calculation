@@ -72,11 +72,18 @@ namespace EdgeDetaction.Core.Repasitorys.Implemantation
         public byte [] ConvertMatreixToArray(byte [,] matrix)
         {
             byte[] arr = new byte[matrix.GetLength(0) * matrix.GetLength(1)];
-            int i = 0;
-            foreach (var item in matrix)
+            int k = 0;
+            for (int j = 0; j < matrix.GetLength(1); j++)
             {
-                arr[i++] = item;
+                for (int i = 0; i < matrix.GetLength(0); i++)
+                {
+                   arr[k++]= matrix[i, j];
+                }
             }
+            //foreach (var item in matrix)
+            //{
+            //    arr[i++] = item;
+            //}
             return arr;
         }
         public byte[,] ConvertArrayToMatrix(byte[] array,int width, int hight)
@@ -226,7 +233,7 @@ namespace EdgeDetaction.Core.Repasitorys.Implemantation
 
             nyuPow2 = sum1 / ((magnitudeMatrix.GetLength(0)) * (magnitudeMatrix.GetLength(1)) - 1);
 
-            return Convert.ToDecimal(nyuPow2/ myuPow2);
+            return Convert.ToDecimal(Math.Round((nyuPow2/ myuPow2),5));
         }
         public Bitmap ConvertArrayToImage(byte[] imageData, int width ,int height)
         { 
@@ -252,6 +259,7 @@ namespace EdgeDetaction.Core.Repasitorys.Implemantation
 
                 }
             }
+
             return Bm;  
         }
     }

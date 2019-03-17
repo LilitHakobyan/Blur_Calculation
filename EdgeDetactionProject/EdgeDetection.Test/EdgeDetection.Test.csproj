@@ -71,6 +71,8 @@
   <ItemGroup>
     <Content Include="Statics\Bitmap.bmp" />
     <Content Include="Statics\hs.png" />
+    <Content Include="Statics\I04.BMP" />
+    <Content Include="Statics\I21.BMP" />
     <Content Include="Statics\lena.jpg" />
     <Content Include="Statics\sobel1.jpg" />
     <Content Include="Statics\venice.png" />
