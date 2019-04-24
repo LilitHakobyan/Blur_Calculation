@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EdgeDetactionProject"
         mc:Ignorable="d"
-        Title="Edge Detaction Project" Height="470" Width="1223.518" ResizeMode="CanMinimize" >
+        Title="Blur Calculation" Height="470" Width="1223.518" ResizeMode="CanMinimize" >
     <Grid Background="{DynamicResource {x:Static SystemColors.InactiveBorderBrushKey}}" Margin="0,-2,2.8,0.8" HorizontalAlignment="Right" Width="1214">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="9*"/>
@@ -14,7 +14,6 @@
         <Menu Width="Auto" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" Margin="0,0,-0.6,397" Grid.ColumnSpan="2">
             <MenuItem Header="Create" Height="21" FontSize="14" Width="79">
                 <MenuItem Header="Create Matrix" Click="CreateAddMatrix_Click" />
-                <MenuItem Header="Create Image" Click="CreateAddMatrix_Click" />
             </MenuItem>
             <MenuItem Header="Operators" Height="21" FontSize="14" Width="79">
                 <MenuItem Header="SobelV" Click="SobelV_Click" />
@@ -25,6 +24,7 @@
             </MenuItem>
             <MenuItem Header="Calculation" Height="21" FontSize="14" Width="79" RenderTransformOrigin="0.709,0.615">
                 <MenuItem Header="Estimation One Click" Click="CalcAll_Click" />
+                <MenuItem Header="Calc Blur For All Folder" Click="LoadAndCalcFromFolder_Click" />
             </MenuItem>
 
         </Menu>
@@ -37,6 +37,7 @@
             </TextBlock.Foreground>
         </TextBlock>
         <Button Content="Browse" HorizontalAlignment="Left" Height="35" Margin="232.2,58,0,0" VerticalAlignment="Top" Width="79" Click="Browse_Click" Grid.Column="1"/>
+
         <Label Content="Component" HorizontalAlignment="Left" Height="31" Margin="585.375,0,0,0" VerticalAlignment="Top" Width="95" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" FontSize="14" Grid.Column="1"/>
         <ComboBox  Name="compComboBox" HorizontalAlignment="Left" Height="26" Margin="685.375,5,0,0" VerticalAlignment="Top" Width="77" RenderTransformOrigin="0.405,0" Grid.Column="1"/>
         <DataGrid  Name="imgDataGrid" SelectionChanged="ImgDataGrid_OnSelectionChanged"  HorizontalAlignment="Left" Height="298" Margin="1.375,112,0,0" VerticalAlignment="Top" Width="774" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Column="1" />
@@ -46,5 +47,6 @@
                 StretchDirection="Both" 
                 HorizontalAlignment="Left" Height="352" Margin="795.2,58,0,0" VerticalAlignment="Top" Width="400" Grid.Column="1"/>
         <Button Content="See All" HorizontalAlignment="Left" Margin="585.2,58,0,0" VerticalAlignment="Top" Width="77" Height="35" Click="Button_Click_1" Grid.Column="1"/>
+        <CheckBox Content="From Folder" Name="FromFolderCheckBox" Grid.Column="1" HorizontalAlignment="Left" Margin="335.2,68,0,0" VerticalAlignment="Top" Height="25" Width="93" Checked="CheckBox_Checked"/>
     </Grid>
 </Window>

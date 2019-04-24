@@ -69,6 +69,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Statics\Bikesgray.jpg" />
     <Content Include="Statics\Bitmap.bmp" />
     <Content Include="Statics\hs.png" />
     <Content Include="Statics\I04.BMP" />
