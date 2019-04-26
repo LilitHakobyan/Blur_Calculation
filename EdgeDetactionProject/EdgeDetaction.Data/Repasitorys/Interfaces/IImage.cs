@@ -35,6 +35,9 @@ namespace EdgeDetaction.Core.Repasitorys.Interfaces
 
         byte[,] Normalize(byte[,] matrix);
 
+        byte[,] CalcBlurMap(byte[,] matrix);
+        double[,] CalcBlurMapDouble(double[,] matrix);
+        Bitmap ConvertArrayToImageForSaveLocal(byte[] imageData, int width, int height);
 
     }
 }

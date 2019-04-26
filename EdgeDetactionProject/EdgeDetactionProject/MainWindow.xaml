@@ -27,7 +27,7 @@
                 <MenuItem Header="Calc Blur Form Folder" Click="LoadAndCalcFromFolder_Click" />
             </MenuItem>
             <MenuItem Header="BlurMap" Height="21" FontSize="14" Width="79" RenderTransformOrigin="0.709,0.615">
-                <MenuItem Header="Calc Blur map" Click="LoadAndCalcFromFolder_Click" />
+                <MenuItem Header="Calc Blur map" Click="CalcBlurMap_Click" />
             </MenuItem>
 
         </Menu>

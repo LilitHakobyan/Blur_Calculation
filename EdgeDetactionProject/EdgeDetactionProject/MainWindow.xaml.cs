@@ -339,5 +339,34 @@ namespace EdgeDetactionProject
                 imgpathtextbox.Text = "Image Path";
             }
         }
+
+        private void CalcBlurMap_Click(object sender, RoutedEventArgs e)
+        {
+            int i = imgDataGrid.SelectedIndex;
+            if (i > -1)
+            {
+                MatrixDetection rowobj = (MatrixDetection)imgDataGrid.Items[i];  // this give you access to the row
+                                                                                 //var sobelVM= dal.ImageDal.GetSobelV(rowobj.Parent1.GetValueOrDefault());
+                                                                                 //var sobelHM = dal.ImageDal.GetSobelH(rowobj.Parent2.GetValueOrDefault());
+
+                var matrix = core.Image.ConvertArrayToMatrixDoubles(rowobj.Matrix, rowobj.Width, rowobj.Height);
+                var sobelMagMatrix = core.Image.MagnitudeFromDefoultMatrix(matrix);
+
+                
+                var calcM = core.Image.CalcBlurMapDouble(sobelMagMatrix);
+                var arrM = core.Image.ConvertMatreixToArray(core.Image.Normalize(calcM));
+                 Bitmap img = core.Image.ConvertArrayToImageForSaveLocal(arrM, rowobj.Width-2, rowobj.Height - 2);
+                 core.Localization.SaveImage(img, "calc");
+
+                 var image = new MatrixDetection() { Name = Guid.NewGuid().ToString(), Component = rowobj.Component, Height = sobelMagMatrix.GetLength(1), Type = "CalcMap", Width = sobelMagMatrix.GetLength(0), Matrix = arrM };
+                 dal.ImageDal.Add(image);
+                 core.Localization.SaveMatrix(calcM, image.Name + "_CalcMap");
+                // dal.ImageDal.SetMagnitude(rowobj.Id, image.Id);
+            }
+            else
+            {
+
+            }
+        }
     }
 }

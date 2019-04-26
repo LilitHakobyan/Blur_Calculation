@@ -8,6 +8,7 @@ using System.IO;
 using System.ComponentModel;
 using System.Windows.Media.Imaging;
 using EdgeDetaction.Core.Repasitorys.Enums;
+using System.Runtime.InteropServices;
 
 namespace EdgeDetaction.Core.Repasitorys.Implemantation
 {
@@ -539,7 +540,16 @@ namespace EdgeDetaction.Core.Repasitorys.Implemantation
 
             sigmaPow2 = sum1 / ((magnitudeMatrix.GetLength(0) * magnitudeMatrix.GetLength(1))-zeroCount);
 
-            return Convert.ToDecimal(Math.Round((sigmaPow2 / myuPow2), 5));
+            try
+            {
+                return Convert.ToDecimal(Math.Round((sigmaPow2 / myuPow2), 5));
+
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+            
         }
         public decimal Estimation(byte[,] magnitudeMatrix)
         {
@@ -615,7 +625,36 @@ namespace EdgeDetaction.Core.Repasitorys.Implemantation
 
             return Bm;
         }
+        public Bitmap ConvertArrayToImageForSaveLocal(byte[] imageData, int width, int height)
+        {
+            Bitmap Bm = new Bitmap(width, height, PixelFormat.Format8bppIndexed);
 
+            var b = new Bitmap(width, height, PixelFormat.Format8bppIndexed);
+
+            ColorPalette ncp = b.Palette;
+
+            for (int i = 0; i < 256; i++)
+
+                ncp.Entries[i] = Color.FromArgb(255, i, i, i);
+
+            b.Palette = ncp;
+
+            var BoundsRect = new Rectangle(0, 0, width, height);
+
+            BitmapData bmpData = b.LockBits(BoundsRect,
+                                            ImageLockMode.WriteOnly,
+                                            PixelFormat.Format8bppIndexed);
+
+            IntPtr ptr = bmpData.Scan0;
+            int bytes = bmpData.Stride * b.Height;
+            var rgbValues = new byte[bytes];
+            Marshal.Copy(imageData, 0, ptr, bytes);
+
+            b.UnlockBits(bmpData);
+            Console.WriteLine(b.GetPixel(3648, 1145).ToString());
+
+            return b;
+        }
         public double[] ConvertMatreixToArrayDouble(double[,] matrix)
         {
             double[] arr = new double[matrix.GetLength(0) * matrix.GetLength(1)];
@@ -740,5 +779,57 @@ namespace EdgeDetaction.Core.Repasitorys.Implemantation
 
             return normalizedMatrixBytes;
         }
+
+       
+
+        public double[,] CalcBlurMapDouble(double[,] matrix)
+        {
+            var w = matrix.GetLength(0);
+            var l = matrix.GetLength(1);
+            double[,] calcBlurM = new double[l, w];
+            double[,] sobelH = new double[3, 3]
+            {
+                { -1, -2, -1 },
+
+                { 0, 0, 0 },
+
+                { 1, 2, 1 }
+
+            };
+            double[,] sobelV = new double[3, 3] {
+                { -1, 0, 1 },
+                { -2, 0, 2 },
+                { -1, 0, 1 }
+
+            };
+            for (int a = 0; a < l - 2; a++)//ijnox
+            {
+                for (int i = 0; i < w - 2; i++)//qaylox
+                {
+                    double[,] subMatrix = GetMatrixPart(matrix, i, a);
+                    //double elementH = CalculateMultiple(subMatrix, sobelH);
+                    //double elementV = CalculateMultiple(subMatrix, sobelV);
+
+                    decimal elementEst = EstimationDouble(subMatrix);
+                    if (elementEst == 0)
+                    {
+                        calcBlurM[a + 1, i + 1] = 0;
+                    }
+                    else
+                    {
+                        calcBlurM[a + 1, i + 1] = Convert.ToDouble(1 / elementEst);
+                    }
+                }
+            }
+            return calcBlurM;
+
+
+        }
+
+        public byte[,] CalcBlurMap(byte[,] matrix)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }
