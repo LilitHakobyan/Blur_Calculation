@@ -825,7 +825,51 @@ namespace EdgeDetaction.Core.Repasitorys.Implemantation
 
 
         }
+        public double[,] CalcBlurMapDoubleForEach3(double[,] matrix)
+        {
+            var w = matrix.GetLength(0);
+            var l = matrix.GetLength(1);
+            double[,] calcBlurM = new double[l, w];
+            double[,] sobelH = new double[3, 3]
+            {
+                { -1, -2, -1 },
 
+                { 0, 0, 0 },
+
+                { 1, 2, 1 }
+
+            };
+            double[,] sobelV = new double[3, 3] {
+                { -1, 0, 1 },
+                { -2, 0, 2 },
+                { -1, 0, 1 }
+
+            };
+            for (int a = 0; a < l - 2; a++)//ijnox
+            {
+                for (int i = 0; i < w - 2; i++)//qaylox
+                {
+                    double[,] subMatrix = GetMatrixPart(matrix, i, a);
+                    //double elementH = CalculateMultiple(subMatrix, sobelH);
+                    //double elementV = CalculateMultiple(subMatrix, sobelV);
+
+                    decimal elementEst = EstimationDouble(subMatrix);
+                    if (elementEst == 0)
+                    {
+                        calcBlurM[a + 1, i + 1] = 0;
+                    }
+                    else
+                    {
+                        calcBlurM[a + 1, i + 1] = Convert.ToDouble(1 / elementEst);
+                    }
+                    i += 3;
+                }
+                a += 3;
+            }
+            return calcBlurM;
+
+
+        }
         public byte[,] CalcBlurMap(byte[,] matrix)
         {
             throw new NotImplementedException();

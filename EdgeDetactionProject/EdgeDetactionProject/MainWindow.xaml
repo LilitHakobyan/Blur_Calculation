@@ -51,5 +51,7 @@
                 HorizontalAlignment="Left" Height="352" Margin="795.2,58,0,0" VerticalAlignment="Top" Width="400" Grid.Column="1"/>
         <Button Content="See All" HorizontalAlignment="Left" Margin="585.2,58,0,0" VerticalAlignment="Top" Width="77" Height="35" Click="Button_Click_1" Grid.Column="1"/>
         <CheckBox Content="From Folder" Name="FromFolderCheckBox" Grid.Column="1" HorizontalAlignment="Left" Margin="335.2,68,0,0" VerticalAlignment="Top" Height="25" Width="93" Checked="CheckBox_Checked"/>
+        <CheckBox Content="Save Local" Name="LocalizationFlag" Grid.Column="1" HorizontalAlignment="Left" Margin="449.2,68,0,0" VerticalAlignment="Top" Height="25" Width="93" Checked="CheckBoxSaveLocal_Checked"/>
+
     </Grid>
 </Window>
