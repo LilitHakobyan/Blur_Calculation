@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28516.95
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EdgeDetaction.View", "EdgeDetactionProject\EdgeDetaction.View.csproj", "{4A7270C3-7658-4E54-B8BD-7630A3808136}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EdgeDetaction.DAL", "EdgeDetaction.Core\EdgeDetaction.DAL.csproj", "{FECD45FC-9D33-4817-AE85-EBD3A4E8D2AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EdgeDetaction.Core", "EdgeDetaction.Data\EdgeDetaction.Core.csproj", "{D98A8488-FF0C-49AA-8E81-288FDFF58C48}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EdgeDetection.Test", "EdgeDetection.Test\EdgeDetection.Test.csproj", "{81A548C4-C157-4DB8-A027-EBC1F9CDD894}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4A7270C3-7658-4E54-B8BD-7630A3808136}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A7270C3-7658-4E54-B8BD-7630A3808136}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A7270C3-7658-4E54-B8BD-7630A3808136}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A7270C3-7658-4E54-B8BD-7630A3808136}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FECD45FC-9D33-4817-AE85-EBD3A4E8D2AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FECD45FC-9D33-4817-AE85-EBD3A4E8D2AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FECD45FC-9D33-4817-AE85-EBD3A4E8D2AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FECD45FC-9D33-4817-AE85-EBD3A4E8D2AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D98A8488-FF0C-49AA-8E81-288FDFF58C48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D98A8488-FF0C-49AA-8E81-288FDFF58C48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D98A8488-FF0C-49AA-8E81-288FDFF58C48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D98A8488-FF0C-49AA-8E81-288FDFF58C48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81A548C4-C157-4DB8-A027-EBC1F9CDD894}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81A548C4-C157-4DB8-A027-EBC1F9CDD894}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81A548C4-C157-4DB8-A027-EBC1F9CDD894}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81A548C4-C157-4DB8-A027-EBC1F9CDD894}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9682FC55-DF9B-405C-9EFA-F41D7D7820A1}
+	EndGlobalSection
+EndGlobal
