@@ -132,7 +132,7 @@ namespace EdgeDetactionProject
                 var sobelMagMatrix = core.Image.MagnitudeFromDefoultMatrixForVisualization(matrix);
 
                 var arrM = core.Image.ConvertMatreixToArray(core.Image.Normalize(sobelMagMatrix));
-                var image = new MatrixDetection() { Name = Guid.NewGuid().ToString(), Component = rowobj.Component, Height = sobelMagMatrix.GetLength(1), Type = "SobelM", Width = sobelMagMatrix.GetLength(0), Matrix = arrM };
+                var image = new MatrixDetection() { Name = rowobj.Name+"_M", Component = rowobj.Component, Height = sobelMagMatrix.GetLength(1), Type = "SobelM", Width = sobelMagMatrix.GetLength(0), Matrix = arrM };
                 dal.ImageDal.Add(image);
                 dal.ImageDal.SetMagnitude(rowobj.Id, image.Id);
                 if (LocalizationFlag.IsChecked == true)
@@ -161,7 +161,7 @@ namespace EdgeDetactionProject
                 var matrix = core.Image.ConvertArrayToMatrixDoubles(rowobj.Matrix, rowobj.Width, rowobj.Height);
                 var sobelvMatrix = core.Image.SobelVOperationDForVisualization(matrix);
                 var arrM = core.Image.ConvertMatreixToArray(core.Image.Normalize(sobelvMatrix));
-                var image = new MatrixDetection() { Name = Guid.NewGuid().ToString(), Component = rowobj.Component, Height = rowobj.Height, Type = "SobelV", Width = rowobj.Width, Matrix = arrM };
+                var image = new MatrixDetection() { Name = rowobj.Name+"_V", Component = rowobj.Component, Height = rowobj.Height, Type = "SobelV", Width = rowobj.Width, Matrix = arrM };
                 dal.ImageDal.Add(image);
                 dal.ImageDal.SetSobelV(rowobj.Id, image.Id);
                 if (LocalizationFlag.IsChecked == true)
@@ -188,7 +188,7 @@ namespace EdgeDetactionProject
                 var matrix = core.Image.ConvertArrayToMatrixDoubles(rowobj.Matrix, rowobj.Width, rowobj.Height);
                 var sobelhMatrix = core.Image.SobelHOperationDoubleForVisualization(matrix);
                 var arrM = core.Image.ConvertMatreixToArray(core.Image.Normalize(sobelhMatrix));
-                var image = new MatrixDetection() { Name = Guid.NewGuid().ToString(), Component = rowobj.Component, Height = rowobj.Height, Type = "SobelH", Width = rowobj.Width, Matrix = arrM };
+                var image = new MatrixDetection() { Name = rowobj.Name+"_H", Component = rowobj.Component, Height = rowobj.Height, Type = "SobelH", Width = rowobj.Width, Matrix = arrM };
                 dal.ImageDal.Add(image);
                 dal.ImageDal.SetSobelH(rowobj.Id, image.Id);
                 if (LocalizationFlag.IsChecked == true)
@@ -314,14 +314,14 @@ namespace EdgeDetactionProject
 
                 var sobelvMatrix = core.Image.SobelVOperationDForVisualization(matrixD);
                 var arrSV = core.Image.ConvertMatreixToArray(core.Image.Normalize(sobelvMatrix));
-                var imageSV = new MatrixDetection() { Name = Guid.NewGuid().ToString(), Component = imageD.Component, Height = h, Type = "SobelV", Width = w, Matrix = arrSV};
+                var imageSV = new MatrixDetection() { Name = filename+"_V", Component = imageD.Component, Height = h, Type = "SobelV", Width = w, Matrix = arrSV};
                 dal.ImageDal.Add(imageSV);
                 dal.ImageDal.SetSobelV(imageD.Id, imageSV.Id);
 
                 //SobelH
                 var sobelhMatrix = core.Image.SobelHOperationDoubleForVisualization(matrixD);
                 var arrSH = core.Image.ConvertMatreixToArray(core.Image.Normalize(sobelhMatrix));
-                var imageSH = new MatrixDetection() { Name = Guid.NewGuid().ToString(), Component = imageD.Component, Height = h, Type = "SobelH", Width = w, Matrix = arrSH};
+                var imageSH = new MatrixDetection() { Name = filename+"_H", Component = imageD.Component, Height = h, Type = "SobelH", Width = w, Matrix = arrSH};
                 dal.ImageDal.Add(imageSH);
                 dal.ImageDal.SetSobelH(imageD.Id, imageSH.Id);
 
@@ -329,7 +329,7 @@ namespace EdgeDetactionProject
                 var sobelMagMatrix = core.Image.MagnitudeFromDefoultMatrixForVisualization(matrixD);
 
                 var arrM = core.Image.ConvertMatreixToArray(core.Image.Normalize(sobelMagMatrix));
-                var imageM = new MatrixDetection() { Name = Guid.NewGuid().ToString(), Component = imageD.Component, Height = sobelMagMatrix.GetLength(1), Type = "SobelM", Width = sobelMagMatrix.GetLength(0), Matrix = arrM };
+                var imageM = new MatrixDetection() { Name = filename+"_M", Component = imageD.Component, Height = sobelMagMatrix.GetLength(1), Type = "SobelM", Width = sobelMagMatrix.GetLength(0), Matrix = arrM };
                 dal.ImageDal.Add(imageM);
                 dal.ImageDal.SetMagnitude(imageD.Id, imageM.Id);
                 //est
@@ -391,7 +391,6 @@ namespace EdgeDetactionProject
                 {
                     Bitmap img = core.Image.ConvertArrayToImage(arrM, rowobj.Width - 2, rowobj.Height - 2);
 
-                    core.Localization.SaveImage(img, "calc");
                     core.Localization.SaveMatrix(calcM, image.Name);
                     core.Localization.SaveImage(img,image.Name);
                 }
