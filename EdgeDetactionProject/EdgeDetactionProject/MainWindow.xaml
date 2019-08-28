@@ -28,6 +28,7 @@
             </MenuItem>
             <MenuItem Header="BlurMap" Height="21" FontSize="14" Width="79" RenderTransformOrigin="0.709,0.615">
                 <MenuItem Header="Calc Blur map" Click="CalcBlurMap_Click" />
+                <MenuItem Header="Blur map locally" Click="BlurMapCalcLoacliy_Click" />
             </MenuItem>
 
         </Menu>

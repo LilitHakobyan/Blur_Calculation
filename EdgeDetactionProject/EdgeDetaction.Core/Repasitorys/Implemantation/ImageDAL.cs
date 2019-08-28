@@ -17,6 +17,8 @@ namespace EdgeDetaction.DAL.Repasitorys.Implemantation
         }
         public List<MatrixDetection> GetAll()
         {
+            //TODO when env is publishing ignor this line 
+
             return DbContext.MatrixDetections.ToList();
         }
 

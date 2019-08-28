@@ -406,5 +406,29 @@ namespace EdgeDetactionProject
         {
 
         }
+        private void BlurMapCalcLoacliy_Click(object sender, RoutedEventArgs e)
+        {
+            var path = $"{@imgpathtextbox.Text}";
+            var filename = System.IO.Path.GetFileNameWithoutExtension(path);
+            var w = 0;
+            var h = 0;
+            var matrix = core.Image.ConvertImageToMatrix(path, (CompTypes)compComboBox.SelectedItem, ref w, ref h);
+         //   var arrM = core.Image.ConvertMatreixToArray(matrix);
+           // var imageD = new MatrixDetection() { Name = filename, Component = "R", Height = h, Type = Convert.ToString(MatrixTypes.Default), Width = w, Matrix = arrM };            
+            core.Localization.SaveMatrix(matrix, filename);
+
+            var sobelMagMatrix = core.Image.MagnitudeFromDefoultMatrix(matrix);
+
+            var calcM = core.Image.CalcBlurMapDouble(sobelMagMatrix);
+            var arrM = core.Image.ConvertMatreixToArray(core.Image.Normalize(calcM));
+
+                Bitmap img = core.Image.ConvertArrayToImage(arrM, w - 2, h - 2);
+
+                core.Localization.SaveMatrix(calcM, filename+"_Map");
+                core.Localization.SaveImage(img, filename + "_Map");
+            
+            // 
+
+        }
     }
 }
