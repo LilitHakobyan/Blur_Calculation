@@ -10,7 +10,7 @@ namespace EdgeDetaction.Core.Repasitorys.Implemantation
     class Localization : ILocalization
     {
         private string defaultPath = Path.Combine(Environment.GetFolderPath(
-                                     Environment.SpecialFolder.MyDoc‌​uments), "EdgeDetaction");
+                                     Environment.SpecialFolder.MyDocuments), "BlurCalculation");
 
         public List<string> GetImagePathsFromFolder(string folderPath)
         {
@@ -120,11 +120,19 @@ namespace EdgeDetaction.Core.Repasitorys.Implemantation
 
         public void SaveImage(Bitmap bm, string filename)
         {
+            if (!Directory.Exists(defaultPath))
+            {
+                Directory.CreateDirectory(defaultPath);
+            }
             bm.Save(Path.Combine(defaultPath, filename) + ".bmp");
         }
 
         public void SaveMatrix(byte[,] matrix, string filename)
         {
+            if (!Directory.Exists(defaultPath))
+            {
+                Directory.CreateDirectory(defaultPath);
+            }
             var path = Path.Combine(defaultPath, filename + ".txt");
             var pathdat = Path.Combine(defaultPath, filename + "_dat.txt");
             if (File.Exists(path))
@@ -156,6 +164,10 @@ namespace EdgeDetaction.Core.Repasitorys.Implemantation
         }
         public void SaveMatrix(double[,] matrix, string filename)
         {
+            if (!Directory.Exists(defaultPath))
+            {
+                Directory.CreateDirectory(defaultPath);
+            }
             var path = Path.Combine(defaultPath, filename + ".txt");
             var pathdat = Path.Combine(defaultPath, filename + "_dat.txt");
             if (File.Exists(path))
