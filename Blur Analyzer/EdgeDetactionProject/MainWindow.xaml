@@ -1,0 +1,57 @@
+﻿<Window x:Class="EdgeDetactionProject.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EdgeDetactionProject"
+        mc:Ignorable="d"
+        Title="Blur Analyzer" Height="470" Width="574" ResizeMode="CanMinimize" >
+    <Grid Background="{DynamicResource {x:Static SystemColors.InactiveBorderBrushKey}}"  HorizontalAlignment="Right" Width="563" Margin="0,0,4,5.8">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="600"/>
+        </Grid.ColumnDefinitions>
+        <Menu Width="Auto" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" Margin="0,0,41.8,397" Grid.ColumnSpan="2">
+            <MenuItem Header="Create" Height="21" FontSize="14" Width="79">
+                <MenuItem Header="Create Matrix" Click="CreateAddMatrix_Click" />
+            </MenuItem>
+            <MenuItem Header="Օperations" Height="21" FontSize="14" Width="79">
+                <MenuItem Header="SobelV operator" Click="SobelV_Click" />
+                <MenuItem Header="SobelH operator" Click="SobelH_Click" />
+                <Separator />
+                <MenuItem Header="Magnitude" Click="Magnitude_Click" />
+                <MenuItem Header="Estimation" Click="Estimation_Click" />
+            </MenuItem>
+            <MenuItem Header="Calculation" Height="21" FontSize="14" Width="79" RenderTransformOrigin="0.709,0.615">
+                <MenuItem Header="Estimation One Click" Click="CalcAll_Click" />
+                <MenuItem Header="Calc Blur Form Folder" Click="LoadAndCalcFromFolder_Click" />
+            </MenuItem>
+            <MenuItem Header="BlurMap" Height="21" FontSize="14" Width="79" RenderTransformOrigin="0.709,0.615">
+                <MenuItem Header="Calc Blur map"  Visibility="Collapsed"  Click="CalcBlurMap_Click" />
+                <MenuItem Header="Blur map locally" Click="BlurMapCalcLoacliy_Click" />
+            </MenuItem>
+
+        </Menu>
+        <TextBlock x:Name="imgpathtextbox" Margin="19,58,0,0" TextWrapping="Wrap" Text="Image Path" VerticalAlignment="Top" Height="35" Width="215" OpacityMask="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" HorizontalAlignment="Left">
+            <TextBlock.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="0"/>
+                    <GradientStop Color="#FF551E1E" Offset="1"/>
+                </LinearGradientBrush>
+            </TextBlock.Foreground>
+        </TextBlock>
+        <Button Content="Browse" HorizontalAlignment="Left" Height="35" Margin="239,58,0,0" VerticalAlignment="Top" Width="79" Click="Browse_Click"/>
+
+        <Label Content="Component" HorizontalAlignment="Left" Height="31" Margin="335.4,0,0,0" VerticalAlignment="Top" Width="95" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" FontSize="14" Grid.Column="1"/>
+        <ComboBox  Name="compComboBox" HorizontalAlignment="Left" Height="26" Margin="435.4,5,0,0" VerticalAlignment="Top" Width="77" RenderTransformOrigin="0.405,0" Grid.Column="1"/>
+        <DataGrid  Name="imgDataGrid" SelectionChanged="ImgDataGrid_OnSelectionChanged"  HorizontalAlignment="Left" Height="40" Margin="1.4,112,0,0" VerticalAlignment="Top" Width="541" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Column="1" />
+        <Button Content="See Default" Visibility="Hidden"  HorizontalAlignment="Left" Height="35" Margin="685.2,58,0,0" VerticalAlignment="Top" Width="77" Click="Button_Click" Grid.Column="1"/>
+
+        <Image x:Name="Imagebox" Stretch="UniformToFill" 
+                StretchDirection="Both" 
+                HorizontalAlignment="Left" Height="171" Margin="1.2,157,0,0" VerticalAlignment="Top" Width="265" Grid.Column="1"/>
+        <Button Content="See All" Visibility="Hidden" HorizontalAlignment="Left" Margin="585.2,58,0,0" VerticalAlignment="Top" Width="77" Height="35" Click="Button_Click_1" Grid.Column="1"/>
+        <CheckBox Content="From Folder" Name="FromFolderCheckBox" Grid.Column="1" HorizontalAlignment="Left" Margin="335.2,68,0,0" VerticalAlignment="Top" Height="25" Width="93" Checked="CheckBox_Checked"/>
+        <CheckBox Content="Save Local" Name="LocalizationFlag" Grid.Column="1" HorizontalAlignment="Left" Margin="449.2,68,0,0" VerticalAlignment="Top" Height="25" Width="93" Checked="CheckBoxSaveLocal_Checked"/>
+
+    </Grid>
+</Window>
